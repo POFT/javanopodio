@@ -47,6 +47,7 @@ public class Piloto {
 
     // DEFINIR DIFICULDADE
     public int escolherDificuldade() {
+        Scanner input = new Scanner(System.in);
         int dificuldade = 0;
         boolean opcaoValida = false;
 
