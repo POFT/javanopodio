@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Modificacao extends ItemCorrida {
 
+    private String nome;
+    private int precoEmFichasCorrida;
     private int diminuicaoDesgaste;
     private double diminuicaoPeso;
     private ArrayList<String> carrosPermitidos; // guardar o tipo de carros que podem/sabem usar dada reparacao
