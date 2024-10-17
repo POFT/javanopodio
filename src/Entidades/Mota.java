@@ -1,5 +1,7 @@
 package Entidades;
 
+import Itens.Habilidade;
+
 import java.util.ArrayList;
 
 public class Mota extends Veiculo {
@@ -24,8 +26,16 @@ public class Mota extends Veiculo {
     }
 
     @Override
-    public void mostrarDetalhes(){
+    public void mostrarDetalhes() {
         super.mostrarDetalhes();
-        System.out.println("Habilidades: " + this.habilidadesMota.size() + " no total");
+
+        if (this.habilidadesMota.isEmpty()) {
+            System.out.println("Nenhuma habilidade aplicada.");
+        } else {
+            System.out.println("Habilidades instaladas (" + this.habilidadesMota.size() + "): ");
+            for (Habilidade habilidade : habilidadesMota) {
+                habilidade.mostrarDetalhes();  // Chama o método mostrarDetalhes() de cada habilidade
+            }
+        }
     }
 }

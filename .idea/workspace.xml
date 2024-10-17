@@ -5,25 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a81b900-4609-4d0e-8f61-b52195f6ee03" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/File/VeiculosCorridas.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/javanopodio.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Carro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Momento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Mota.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Oficina.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Piloto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Pista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entidades/Veiculo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Itens/Habilidade.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Itens/ItemCorrida.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Itens/Modificacao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Itens/TipoCarro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Jogo/Jogo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Carro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Carro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Momento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Momento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Mota.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Mota.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Oficina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Oficina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Piloto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Piloto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Pista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Pista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Veiculo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Itens/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Itens/Habilidade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Itens/ItemCorrida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Itens/ItemCorrida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Itens/Modificacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Itens/Modificacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jogo/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jogo/Jogo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,20 +47,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Workinprogress/MVCFinal&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Workinprogress/MVCFinal",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -84,7 +81,8 @@
       <updated>1729100927355</updated>
       <workItem from="1729100928401" duration="12450000" />
       <workItem from="1729117363718" duration="662000" />
-      <workItem from="1729121817956" duration="1015000" />
+      <workItem from="1729121817956" duration="2258000" />
+      <workItem from="1729155081396" duration="17152000" />
     </task>
     <servers />
   </component>

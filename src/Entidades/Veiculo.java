@@ -1,5 +1,9 @@
 package Entidades;
 
+import Itens.ItemCorrida;
+
+import java.util.ArrayList;
+
 public abstract class Veiculo {
 
 
@@ -10,6 +14,7 @@ public abstract class Veiculo {
     private double pesokg;
     private int desgaste;
     private int preco;
+    private ArrayList<ItemCorrida> inventario;
 
     public Veiculo(String marca, String modelo, int potenciaCV, double pesokg, int desgaste, int preco) {
         this.marca = marca;
@@ -18,6 +23,7 @@ public abstract class Veiculo {
         this.pesokg = pesokg;
         this.desgaste = desgaste;
         this.preco = preco;
+        this.inventario = new ArrayList<>();
     }
 
     public String getMarca() {
@@ -68,6 +74,14 @@ public abstract class Veiculo {
         this.preco = preco;
     }
 
+    public ArrayList<ItemCorrida> getInventario() {
+        return inventario;
+    }
+
+    public void adicionarItem(ItemCorrida item) {
+        inventario.add(item);
+    }
+
     //METODO PRINT DE TODOS OS  DETALHES DO VEICULO
     public void mostrarDetalhes(){
         System.out.println("Marca: " + this.marca);
@@ -78,5 +92,20 @@ public abstract class Veiculo {
         System.out.println("Preço: " + this.preco);
     }
 
+
+    // MÉTODO PARA AUMENTAR DESGASTE DO VEÍCULO
+    public void aumentarDesgaste(int valor) {
+        this.desgaste += valor;
+    }
+
+    // MÉTODO PARA AUMENTAR POTÊNCIA DO VEÍCULO
+    public void aumentarPotencia(int valor) {
+        this.potenciaCV += valor;
+    }
+
+    // MÉTODO PARA REDUZIR PESO DO VEÍCULO
+    public void reduzirPeso(double valor) {
+        this.pesokg -= valor;
+    }
 
 }

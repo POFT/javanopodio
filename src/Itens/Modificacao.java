@@ -3,16 +3,13 @@ package Itens;
 import java.util.ArrayList;
 
 public class Modificacao extends ItemCorrida {
-    private String nome;
-    private int precoEmFichasCorrida;
+
     private int diminuicaoDesgaste;
     private double diminuicaoPeso;
     private ArrayList<String> carrosPermitidos; // guardar o tipo de carros que podem/sabem usar dada reparacao
 
-    public Modificacao(String nome, int precoEmFichasCorrida, String nome1, int precoEmFichasCorrida1, int diminuicaoDesgaste, double diminuicaoPeso, ArrayList<String> carrosPermitidos) {
+    public Modificacao(String nome, int precoEmFichasCorrida, int diminuicaoDesgaste, double diminuicaoPeso, ArrayList<String> carrosPermitidos) {
         super(nome, precoEmFichasCorrida);
-        this.nome = nome1;
-        this.precoEmFichasCorrida = precoEmFichasCorrida1;
         this.diminuicaoDesgaste = diminuicaoDesgaste;
         this.diminuicaoPeso = diminuicaoPeso;
         this.carrosPermitidos = carrosPermitidos;
@@ -20,6 +17,15 @@ public class Modificacao extends ItemCorrida {
 
 
 
+
+    // Getters e Setters
+    public int getDiminuicaoDesgaste() {
+        return diminuicaoDesgaste;
+    }
+
+    public void setDiminuicaoDesgaste(int diminuicaoDesgaste) {
+        this.diminuicaoDesgaste = diminuicaoDesgaste;
+    }
 
     public double getDiminuicaoPeso() {
         return diminuicaoPeso;
@@ -37,12 +43,15 @@ public class Modificacao extends ItemCorrida {
         this.carrosPermitidos = carrosPermitidos;
     }
 
+
+
     @Override
-    public void mostrarDetalhes(){
-        super.mostrarDetalhes();
-        System.out.println("Desgaste: " + this.diminuicaoDesgaste);
-        System.out.println("Peso: " + this.diminuicaoPeso);
-        System.out.println("Carros Permitidos: " + this.carrosPermitidos);
+    public void mostrarDetalhes() {
+        System.out.println("Nome da Modificação: " + getNome());
+        System.out.println("Preço em Fichas de Corrida: " + getPrecoEmFichasCorrida());
+        System.out.println("Diminuição de Desgaste: " + this.diminuicaoDesgaste);
+        System.out.println("Diminuição de Peso: " + this.diminuicaoPeso);
+        System.out.println("Carros Permitidos: " + String.join(", ", this.carrosPermitidos));
     }
 }
 

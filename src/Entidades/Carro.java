@@ -1,5 +1,6 @@
 package Entidades;
 
+import Itens.Modificacao;
 import Itens.TipoCarro;
 
 import java.util.ArrayList;
@@ -31,16 +32,29 @@ public class Carro extends Veiculo {
         this.kitCorrida = kitCorrida;
     }
 
-    public void adicionarModificacao (Modificacao modificacao){
-        this.kitCorrida.add(modificacao);
+    // Método para adicionar modificação ao kit
+    public void adicionarModificacao(Modificacao modificacao) {
+        // Verificação para garantir que a modificação pode ser aplicada ao tipo de carro
+        if (modificacao.getCarrosPermitidos().contains(this.tipoCarro.toString())) {
+            this.kitCorrida.add(modificacao);
+        } else {
+            System.out.println("Esta modificação não pode ser aplicada a este tipo de carro.");
+        }
     }
 
 
     @Override
     public void mostrarDetalhes() {
         super.mostrarDetalhes();
-        System.out.println("Tipo Carro: " + this.tipoCarro);
-        System.out.println("Modificações: " + this.kitCorrida.size() + " no total");
+        System.out.println("Tipo de Carro: " + this.tipoCarro);
 
+        if (this.kitCorrida.isEmpty()) {
+            System.out.println("Nenhuma modificação aplicada.");
+        } else {
+            System.out.println("Modificações instaladas (" + this.kitCorrida.size() + "): ");
+            for (Modificacao modificacao : this.kitCorrida) {
+                modificacao.mostrarDetalhes();  // Chama o método mostrarDetalhes() da modificação
+            }
+        }
     }
 }

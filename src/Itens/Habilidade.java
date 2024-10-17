@@ -9,7 +9,7 @@ public class Habilidade extends ItemCorrida{
         this.aumentoPotencia = aumentoPotencia;
     }
 
-
+    // Getters e Setters
     public int getAumentoPotencia() {
         return aumentoPotencia;
     }
@@ -18,9 +18,11 @@ public class Habilidade extends ItemCorrida{
         this.aumentoPotencia = aumentoPotencia;
     }
 
+    // Implementação do método mostrarDetalhes
     @Override
-    public void mostrarDetalhes(){
-        super.mostrarDetalhes();
-        System.out.println("Aumento de Potencia: " + this.aumentoPotencia);
+    public void mostrarDetalhes() {
+        System.out.println("Nome da Habilidade: " + getNome());
+        System.out.println("Preço em Fichas de Corrida: " + getPrecoEmFichasCorrida());
+        System.out.println("Aumento de Potência: " + this.aumentoPotencia);
     }
 }

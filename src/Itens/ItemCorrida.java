@@ -1,5 +1,7 @@
 package Itens;
 
+import Entidades.Veiculo;
+
 public abstract class ItemCorrida {
 
     private String nome;
@@ -10,6 +12,7 @@ public abstract class ItemCorrida {
         this.precoEmFichasCorrida = precoEmFichasCorrida;
     }
 
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -18,11 +21,18 @@ public abstract class ItemCorrida {
         this.nome = nome;
     }
 
-    public int getPrecoEmFichasCorrida(int precoEmFichasCorrida) {
+    public int getPrecoEmFichasCorrida() {
         return precoEmFichasCorrida;
     }
 
     public void setPrecoEmFichasCorrida(int precoEmFichasCorrida) {
         this.precoEmFichasCorrida = precoEmFichasCorrida;
+    }
+
+    // Método abstrato para mostrar os detalhes do item
+    public abstract void mostrarDetalhes();
+
+
+    public void aplicarEfeito(Veiculo veiculoAtual) {
     }
 }

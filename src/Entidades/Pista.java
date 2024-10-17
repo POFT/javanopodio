@@ -20,6 +20,7 @@ public class Pista {
     }
 
 
+    // Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -68,6 +69,31 @@ public class Pista {
         this.momentosPista = momentosPista;
     }
 
+    // Método adicional para adicionar um momento à pista
+    public void adicionarMomento(Momento momento) {
+        this.momentosPista.add(momento);
+    }
 
+    // Método adicional para remover um momento da pista
+    public void removerMomento(Momento momento) {
+        this.momentosPista.remove(momento);
+    }
 
+    // Método para verificar se a pista tem momentos suficientes
+    public boolean temMomentosSuficientes() {
+        return this.momentosPista.size() >= 2;
+    }
+
+    // Método para imprimir os detalhes da pista
+    public void imprimirDetalhes() {
+        System.out.println("Nome da pista: " + this.nome);
+        System.out.println("Distância por volta: " + this.distanciaVoltaM + " metros");
+        System.out.println("Número de voltas: " + this.quantidadeVoltas);
+        System.out.println("Tempo recorde: " + this.tempoRecordeSeg + " segundos");
+
+        System.out.println("Momentos da pista: ");
+        for (Momento momento : momentosPista) {
+            System.out.println("- " + momento.getNome());
+        }
+    }
 }
