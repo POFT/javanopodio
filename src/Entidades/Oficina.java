@@ -106,7 +106,8 @@ public class Oficina {
     }
 
     // METODO VENDER ITEM
-    public void venderItem(Piloto piloto, Scanner scanner) {
+    public void venderItem(Piloto piloto) {
+        Scanner scanner = new Scanner(System.in);
         if (stock.isEmpty()) {
             System.out.println("Não há itens disponíveis para venda.");
             return;
@@ -140,33 +141,43 @@ public class Oficina {
 
 
     // METODO VENDER VEICULO
-    public void venderVeiculo(Piloto piloto, Scanner scanner) {
+    public void venderVeiculo(Piloto piloto) {
+        Scanner scanner = new Scanner(System.in);
+
+
+
         if (garagem.isEmpty()) {
             System.out.println("Não há veículos disponíveis para venda.");
             return;
         }
 
-        System.out.println("Veículos disponíveis:");
-        imprimirGaragem();
+        do {
+            imprimirGaragem();
+            System.out.println(piloto.getFichasCorrida());
 
-        System.out.println("Escolhe o veículo pelo índice:");
-        int opcao = scanner.nextInt();
+            System.out.println("Escolhe o veículo pelo índice:");
+            int opcao = scanner.nextInt();
 
-        // Verificação se a opção é válida
-        if (opcao < 0 || opcao >= garagem.size()) {
-            System.out.println("Opção inválida.");
-            return;
-        }
+            // Verificação se a opção é válida
+            if (opcao < 0 || opcao >= garagem.size()) {
+                System.out.println("Opção inválida.");
+                return;
+            }
 
-        Veiculo veiculoEscolhido = garagem.get(opcao);
+            Veiculo veiculoEscolhido = garagem.get(opcao);
 
-        if (piloto.getFichasCorrida() >= veiculoEscolhido.getPreco()) {
-            piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
-            piloto.setVeiculoAtual(veiculoEscolhido);
-            System.out.println("Compra efetuada com sucesso.");
-            garagem.remove(veiculoEscolhido);
-        } else {
-            System.out.println("Não tens saldo suficiente!!!");
-        }
+            if (piloto.getFichasCorrida() >= veiculoEscolhido.getPreco()) {
+                piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
+                piloto.setVeiculoAtual(veiculoEscolhido);
+                System.out.println("Compra efetuada com sucesso.");
+                garagem.remove(veiculoEscolhido);
+            } else {
+                System.out.println("Não tens saldo suficiente!!!");
+            }
+
+
+        }while (piloto.getVeiculoAtual()==null);
+
+
     }
 }

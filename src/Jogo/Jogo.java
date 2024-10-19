@@ -107,13 +107,13 @@ public class Jogo {
         Oficina oficina = new Oficina();
 
         // Instanciar veículos (16 no total, 10 carros e 6 motas)
-        Carro carro1 = new Carro("Toyota", "GR86", 234, 1276, 0, 50000, TipoCarro.GT);
+        Carro carro1 = new Carro("Toyota", "GR86", 234, 1276, 0, 2000, TipoCarro.GT);
         Carro carro2 = new Carro("Mercedes", "AMG A45 S 4Matic", 421, 1455, 0, 125000, TipoCarro.GT);
         Carro carro3 = new Carro("BMW", "M5 CS", 625, 1825, 0, 156500, TipoCarro.GT);
         Carro carro4 = new Carro("Ferrari", "SF90 Stradale", 1000, 1435, 0, 300000, TipoCarro.GT);
-        Carro carro5 = new Carro("Ferrari", "F8", 720, 1435, 0, 300000, TipoCarro.F1);
+        Carro carro5 = new Carro("Ferrari", "F8", 720, 1435, 0, 300000, TipoCarro.F1); //*
         Carro carro6 = new Carro("McLaren", "720S", 710, 1419, 0, 299000, TipoCarro.F1);
-        Carro carro7 = new Carro("Red Bull Racing", "RB15", 900, 1419, 0, 300000, TipoCarro.F1);
+        Carro carro7 = new Carro("Red Bull Racing", "RB15", 900, 1419, 0, 300000, TipoCarro.F1); //*
         Carro carro8 = new Carro("Ford", "Mustang", 450, 1650, 0, 60000, TipoCarro.RALLY);
         Carro carro9 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 65000, TipoCarro.RALLY);
         Carro carro10 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 65000, TipoCarro.RALLY);
@@ -183,7 +183,7 @@ public class Jogo {
         Pista pista1 = new Pista("Autódromo do Estoril", 120.5, 118.3, 4300, 10);
         Pista pista2 = new Pista("Circuit de Monaco", 95.2, 92.8, 3500, 8);
         Pista pista3 = new Pista("Monza", 150.4, 133.0, 4800, 12);
-        Pista pista4 = new Pista("Silverstone", 150.7, 148.5, 5000, 5);
+        Pista pista4 = new Pista("Silverstone", 150.7, 148.5, 5000, 5); //*
         Pista pista5 = new Pista("Circuit Gilles Villeneuve", 105.9, 104.3, 4300, 9);
 
         // Instanciar momentos para as pistas
@@ -218,12 +218,50 @@ public class Jogo {
 
 
 
-        System.out.println("\nEscolha a pista para a corrida:");
-        System.out.println("1. " + pista1.getNome());
-        System.out.println("2. " + pista2.getNome());
-        System.out.println("3. " + pista3.getNome());
-        System.out.println("4. " + pista4.getNome());
-        System.out.println("5. " + pista5.getNome());
+
+
+
+
+        System.out.println("\n******* Veículos Disponíveis na Oficina *******");
+        oficina.imprimirGaragem();
+        oficina.venderVeiculo(piloto);
+
+
+
+        Scanner input = new Scanner(System.in);
+        int opcao = 0;
+        do {
+            System.out.println("\nEscolha a pista para a corrida:");
+            System.out.println("1. " + pista1.getNome());
+            System.out.println("2. " + pista2.getNome());
+            System.out.println("3. " + pista3.getNome());
+            System.out.println("4. " + pista4.getNome());
+            System.out.println("5. " + pista5.getNome());
+            opcao = input.nextInt();
+            switch (opcao) {
+                case 1:
+                    piloto.corrida(pista1);
+                break;
+                case 2:
+                    piloto.corrida(pista2);
+                    break;
+                    case 3:
+                        piloto.corrida(pista3);
+                        break;
+                        case 4:
+                            piloto.corrida(pista3);
+                            break;
+                case 5:
+                    piloto.corrida(pista4);
+                    break;
+                default:
+                    System.out.println("");
+            }
+        } while (opcao!=0);
+
+
+
+
 
 
     }

@@ -12,14 +12,12 @@ public class Main {
     public static <Habilidade> void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        
+
         System.out.println("Bem-vindo ao Simulador de Corridas!");
 
-
-
-
         Jogo jogo = new Jogo();
-        jogo.criarPiloto();
+        Piloto piloto = jogo.criarPiloto();
+        jogo.simuladorCorridas(piloto);
 
 
 

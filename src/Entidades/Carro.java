@@ -50,6 +50,7 @@ public class Carro extends Veiculo {
         System.out.println("Modelo: " + this.getModelo());
         System.out.println("Potência: " + this.getPotenciaCV() + " CV");
         System.out.println("Tipo de Carro: " + this.tipoCarro);
+        System.out.println("Preço: " + this.getPreco());
         if (!kitCorrida.isEmpty()) {
             System.out.println("Modificações Aplicadas:");
             for (Modificacao mod : kitCorrida) {

@@ -33,6 +33,7 @@ public class Mota extends Veiculo {
         System.out.println("Marca: " + this.getMarca());
         System.out.println("Modelo: " + this.getModelo());
         System.out.println("Potência: " + this.getPotenciaCV() + " CV");
+        System.out.println("Preço: " + this.getPreco());
         if (!habilidadesMota.isEmpty()) {
             System.out.println("Habilidades Aplicadas:");
             for (Habilidade hab : habilidadesMota) {
