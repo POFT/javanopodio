@@ -5,6 +5,8 @@ import Itens.Modificacao;
 import Itens.TipoCarro;
 import Jogo.Jogo;
 
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -19,12 +21,6 @@ public class Main {
         Piloto piloto = jogo.criarPiloto();
         jogo.simuladorCorridas(piloto);
 
-
-
-
-
-        // Veiculo  veiculo = new Veiculo();
-        // Piloto piloto = new Piloto("João", 0,veiculo,0);
 
 
 

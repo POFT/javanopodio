@@ -30,17 +30,10 @@ public class Mota extends Veiculo {
 
     @Override
     public void mostrarDetalhes() {
-        System.out.println("Marca: " + this.getMarca());
-        System.out.println("Modelo: " + this.getModelo());
-        System.out.println("Potência: " + this.getPotenciaCV() + " CV");
-        System.out.println("Preço: " + this.getPreco());
-        if (!habilidadesMota.isEmpty()) {
-            System.out.println("Habilidades Aplicadas:");
-            for (Habilidade hab : habilidadesMota) {
-                hab.mostrarDetalhes();
-            }
-        } else {
-            System.out.println("Nenhuma habilidade aplicada.");
+        System.out.println("Marca: " + this.getMarca() + " | Modelo: " + this.getModelo() + " | Potência: " + this.getPotenciaCV() + " CV");
+        System.out.println("[Preço: " + this.getPreco() + "]");
+        if (this.getDesgaste() > 0){
+            System.out.println("Desgaste: " + this.getDesgaste());
         }
     }
 }

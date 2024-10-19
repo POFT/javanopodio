@@ -44,44 +44,81 @@ public class Oficina {
 
 
     // METODO IMPRIMIR STOCK
-    public void imprimirStock() {
-        Random random = new Random();
-        int tamanho = stock.size();
-
-        if (tamanho == 0) {
-            System.out.println("Nenhum item disponível no estoque.");
-            return;
+    public ArrayList<ItemCorrida> imprimirStock() {
+        if (stock == null || stock.isEmpty()) {
+            System.out.println("Não existem itens na garagem.");
+            return new ArrayList<>(); // Retorna uma lista vazia
         }
-
-        // Número de itens a imprimir (máximo 6 ou o tamanho do stock)
-        int quantidadeItens = Math.min(tamanho, 6);
-
+        Random random = new Random();
         ArrayList<ItemCorrida> itensSelecionados = new ArrayList<>();
-        while (itensSelecionados.size() < quantidadeItens) {
-            int indiceAleatorio = random.nextInt(tamanho);
-            ItemCorrida item = stock.get(indiceAleatorio);
+        int quantidadeItens = Math.min(stock.size(), 6);
 
+        while (itensSelecionados.size() < quantidadeItens) {
+            int indexAleatorio = random.nextInt(stock.size());
+            ItemCorrida item = stock.get(indexAleatorio);
             // Certifica-se de não adicionar o mesmo item mais de uma vez
             if (!itensSelecionados.contains(item)) {
                 itensSelecionados.add(item);
             }
         }
-
         // Exibe os itens selecionados
-        System.out.println("Itens disponíveis no stock:");
+        System.out.println("[OFICINA ITENS]");
+        int indice = 0;
         for (ItemCorrida item : itensSelecionados) {
+            System.out.println("Item #" + indice);
             item.mostrarDetalhes();
             System.out.println("______________");
+            indice++;
         }
+        return itensSelecionados;
     }
 
-    // METODO IMPRIMIR GARAGEM
-    public void imprimirGaragem() {
-        if (garagem.size() == 0) {
-            System.out.println("Não existem veículos na garagem.");
+    // METODO VENDER ITEM
+    public void venderItem(Piloto piloto) {
+        Scanner scanner = new Scanner(System.in);
+
+        if (stock.isEmpty()) {
+            System.out.println("Não há itens disponíveis para venda.");
             return;
         }
 
+        int itensComprados = 0;
+        int maxItens = 2; // Limite máximo de itens que pode comprar
+
+        do{
+            ArrayList<ItemCorrida> itensTemp = imprimirStock();
+            System.out.println("Fichas: " + piloto.getFichasCorrida());
+
+            System.out.println("Escolhe o item pelo índice:");
+            int opcao = scanner.nextInt();
+
+            // Verificação se a opção é válida
+            if (opcao < 0 || opcao >= stock.size()) {
+                System.out.println("Opção inválida.");
+                return;
+            }
+
+            ItemCorrida itemEscolhido = stock.get(opcao);
+
+            if (piloto.getFichasCorrida() >= itemEscolhido.getPrecoEmFichasCorrida()) {
+                piloto.setFichasCorrida(piloto.getFichasCorrida() - itemEscolhido.getPrecoEmFichasCorrida());
+                piloto.getVeiculoAtual().adicionarItem(itemEscolhido);
+                System.out.println("Compra efetuada com sucesso: [" + itemEscolhido.getNome() + "]");
+            } else {
+                System.out.println("Não tens saldo suficiente!!!");
+            }
+
+        } while (itensComprados < maxItens);
+
+        System.out.println("Apenas é possível comprar " + maxItens + " itens neste acesso.");
+    }
+
+    // METODO IMPRIMIR GARAGEM
+    public ArrayList<Veiculo> imprimirGaragem() {
+        if (garagem == null || garagem.isEmpty()) {
+            System.out.println("Não existem veículos na garagem.");
+            return new ArrayList<>(); // Retorna uma lista vazia
+        }
         Random random = new Random();
         ArrayList<Veiculo> veiculosSelecionados = new ArrayList<>();
         int quantidadeVeiculos = Math.min(garagem.size(), 12);
@@ -95,48 +132,16 @@ public class Oficina {
             }
         }
 
-        System.out.println("Veículos disponíveis na garagem:");
+        System.out.println("\n[OFICINA GARAGEM]");
         int indice = 0;
         for (Veiculo veiculo : veiculosSelecionados) {
-            System.out.println("Veículo #" + indice);
+            System.out.println("Veículo [" + indice + "]");
             veiculo.mostrarDetalhes();
             System.out.println("______________");
             indice++;
         }
+        return veiculosSelecionados;
     }
-
-    // METODO VENDER ITEM
-    public void venderItem(Piloto piloto) {
-        Scanner scanner = new Scanner(System.in);
-        if (stock.isEmpty()) {
-            System.out.println("Não há itens disponíveis para venda.");
-            return;
-        }
-
-        System.out.println("Itens disponíveis:");
-        imprimirStock();
-
-        System.out.println("Escolhe o item pelo índice:");
-        int opcao = scanner.nextInt();
-
-        // Verificação se a opção é válida
-        if (opcao < 0 || opcao >= stock.size()) {
-            System.out.println("Opção inválida.");
-            return;
-        }
-
-        ItemCorrida itemEscolhido = stock.get(opcao);
-
-        if (piloto.getFichasCorrida() >= itemEscolhido.getPrecoEmFichasCorrida()) {
-            piloto.setFichasCorrida(piloto.getFichasCorrida() - itemEscolhido.getPrecoEmFichasCorrida());
-            piloto.getVeiculoAtual().adicionarItem(itemEscolhido);
-            System.out.println("Compra efetuada com sucesso.");
-            stock.remove(itemEscolhido);
-        } else {
-            System.out.println("Não tens saldo suficiente!!!");
-        }
-    }
-
 
 
 
@@ -144,36 +149,35 @@ public class Oficina {
     public void venderVeiculo(Piloto piloto) {
         Scanner scanner = new Scanner(System.in);
 
-
-
         if (garagem.isEmpty()) {
             System.out.println("Não há veículos disponíveis para venda.");
             return;
         }
 
         do {
-            imprimirGaragem();
-            System.out.println(piloto.getFichasCorrida());
-
-            System.out.println("Escolhe o veículo pelo índice:");
+            ArrayList<Veiculo> garagemTemp = imprimirGaragem();
+            System.out.println("[Fichas disponíveis: " + piloto.getFichasCorrida() + "]");
+            System.out.println("Escolhe o veículo inserindo a opção numérica correspondente:");
+            System.out.print("> ");
             int opcao = scanner.nextInt();
 
             // Verificação se a opção é válida
-            if (opcao < 0 || opcao >= garagem.size()) {
+            if (opcao < 0 || opcao >= garagemTemp.size()) {
                 System.out.println("Opção inválida.");
                 return;
             }
 
-            Veiculo veiculoEscolhido = garagem.get(opcao);
+            Veiculo veiculoEscolhido = garagemTemp.get(opcao);
 
             if (piloto.getFichasCorrida() >= veiculoEscolhido.getPreco()) {
                 piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
                 piloto.setVeiculoAtual(veiculoEscolhido);
-                System.out.println("Compra efetuada com sucesso.");
+                System.out.println("Compra efetuada com sucesso. [" + veiculoEscolhido.getMarca() + " " + veiculoEscolhido.getModelo()+"]");
                 garagem.remove(veiculoEscolhido);
             } else {
                 System.out.println("Não tens saldo suficiente!!!");
             }
+            System.out.println("______________\n")    ;
 
 
         }while (piloto.getVeiculoAtual()==null);

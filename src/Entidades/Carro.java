@@ -46,18 +46,10 @@ public class Carro extends Veiculo {
 
     @Override
     public void mostrarDetalhes() {
-        System.out.println("Marca: " + this.getMarca());
-        System.out.println("Modelo: " + this.getModelo());
-        System.out.println("Potência: " + this.getPotenciaCV() + " CV");
-        System.out.println("Tipo de Carro: " + this.tipoCarro);
-        System.out.println("Preço: " + this.getPreco());
-        if (!kitCorrida.isEmpty()) {
-            System.out.println("Modificações Aplicadas:");
-            for (Modificacao mod : kitCorrida) {
-                mod.mostrarDetalhes();
-            }
-        } else {
-            System.out.println("Nenhuma modificação aplicada.");
+        System.out.println("Marca: " + this.getMarca() + " | Modelo: " + this.getModelo() + " | Potência: " + this.getPotenciaCV() + " CV" + " | Tipo de Carro: " + this.tipoCarro);
+        System.out.println("[Preço: " + this.getPreco() + "]");
+        if (this.getDesgaste() > 0){
+            System.out.println("Desgaste: " + this.getDesgaste());
         }
     }
 }

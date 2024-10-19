@@ -117,8 +117,12 @@ public class Piloto {
             double distanciaVolta = pista.getDistanciaVoltaM();
             double potencia = veiculoAtual.getPotenciaCV();
             double peso = veiculoAtual.getPesokg();
+
             // Calcular o tempo da volta:
-            double tempoVolta = (distanciaVolta / (1.6 * potencia)) - (0.2 * peso) - (0.5 * desgaste);
+            double tempoBase = distanciaVolta / (1.6 * potencia);
+            double ajustePeso = (0.2 * peso);
+            double ajusteDesgaste = (0.5 * desgaste);
+            double tempoVolta = tempoBase + ajustePeso + ajusteDesgaste;
 
             // Calcular os atrasos nos momentos da pista:
             double atrasoTotal = 0.0;
@@ -127,21 +131,50 @@ public class Piloto {
                 atrasoTotal += atraso;
             }
 
+
             tempoTotal += tempoVolta + atrasoTotal;
             // Auto desgaste em cada volta:
-            desgaste += 10;
+            desgaste += 20;
         }
 
-        System.out.println("Tempo total da corrida: " + tempoTotal + " segundos");
+        System.out.println("O teu Tempo total: " + tempoTotal + " segundos");
+
+        if (desgaste > 1000) {
+            System.out.println("O teu veículo avariou durante a corrida!");
+        }
 
         // Verificar se o piloto bateu o recorde da pista
-        if (tempoTotal < tempoRecorde) {
-            System.out.println("Parabéns! Bateu o recorde da pista!");
+        if (tempoTotal < tempoRecorde && desgaste < 1000) {
+            System.out.println("Parabéns! Bateu o recorde da pista! ");
             this.fichasCorrida += 1000; // Bônus por bater o recorde
+            this.vitorias++;
+            System.out.println("Prémio: 1000/1000");
         } else {
             this.fichasCorrida += 500; // Recompensa parcial
+            System.out.println("Terminaste a corrida mas o recorde não é teu!");
+            System.out.println("Prémio: 500/1000");
         }
 
         return tempoTotal;
     }
+
+
+
+
+    public void mostrarDetalhes() {
+        System.out.println("***** DETALHES DO PILOTO *****");
+        System.out.println("Nome do piloto: " + this.nome);
+        System.out.println("Fichas de corrida: " + this.fichasCorrida);
+        System.out.println("Vitórias: " + this.vitorias);
+
+        if (this.veiculoAtual != null) {
+            System.out.println("\n[DETALHES DO VEÍCULO ATUAL]");
+            veiculoAtual.mostrarDetalhes(); // Exibe os detalhes do veículo atual
+        } else {
+            System.out.println("\nNenhum veículo atual atribuído ao piloto.");
+        }
+        System.out.println("******************************");
+    }
+
+
 }
