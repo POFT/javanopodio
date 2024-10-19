@@ -35,4 +35,11 @@ public class Momento {
     public void setAtrasoPotencia(double atrasoPotencia) {
         this.atrasoPotencia = atrasoPotencia;
     }
+
+    @Override
+    public String toString() {
+        return "Momento: " + nome +
+                ", Atraso Peso: " + atrasoPeso +
+                ", Atraso Potência: " + atrasoPotencia;
+    }
 }

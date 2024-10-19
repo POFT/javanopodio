@@ -15,14 +15,16 @@ public class Habilidade extends ItemCorrida{
     }
 
     public void setAumentoPotencia(int aumentoPotencia) {
-        this.aumentoPotencia = aumentoPotencia;
+        if (aumentoPotencia > 0) {
+            this.aumentoPotencia = aumentoPotencia;
+        }
     }
 
     // Implementação do método mostrarDetalhes
     @Override
     public void mostrarDetalhes() {
-        System.out.println("Nome da Habilidade: " + getNome());
-        System.out.println("Preço em Fichas de Corrida: " + getPrecoEmFichasCorrida());
+        System.out.println("Nome da Habilidade: " + this.getNome());
         System.out.println("Aumento de Potência: " + this.aumentoPotencia);
+        System.out.println("Preço em Fichas de Corrida: " + this.getPrecoEmFichasCorrida());
     }
 }

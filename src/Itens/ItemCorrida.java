@@ -26,13 +26,12 @@ public abstract class ItemCorrida {
     }
 
     public void setPrecoEmFichasCorrida(int precoEmFichasCorrida) {
-        this.precoEmFichasCorrida = precoEmFichasCorrida;
+        if (precoEmFichasCorrida > 0) {
+            this.precoEmFichasCorrida = precoEmFichasCorrida;
+        }
     }
 
     // Método abstrato para mostrar os detalhes do item
     public abstract void mostrarDetalhes();
 
-
-    public void aplicarEfeito(Veiculo veiculoAtual) {
-    }
 }

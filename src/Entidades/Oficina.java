@@ -1,11 +1,13 @@
 package Entidades;
 
 import Itens.ItemCorrida;
+import Itens.Modificacao;
 import Itens.TipoCarro;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Oficina {
@@ -19,53 +21,9 @@ public class Oficina {
         this.stock = new ArrayList<>();
     }
 
-    // Método para carregar os veículos da garagem a partir do arquivo CSV
-    public void carregarVeiculos(String caminhoArquivo) {
-        try {
-            File arquivo = new File(caminhoArquivo);
-            Scanner scanner = new Scanner(arquivo);
-            boolean primeiraLinha = true;
 
-            while (scanner.hasNextLine()) {
-                String linha = scanner.nextLine();
 
-                // Ignorar a primeira linha (cabeçalho)
-                if (primeiraLinha) {
-                    primeiraLinha = false;
-                    continue;
-                }
-
-                // Separar os valores da linha
-                String[] dados = linha.split(";");
-
-                String tipo = dados[0];
-                String marca = dados[1];
-                String modelo = dados[2];
-                int potenciaCV = Integer.parseInt(dados[3]);
-                double pesoKg = Double.parseDouble(dados[4]);
-                int preco = Integer.parseInt(dados[5]);
-
-                // Verificar o tipo do veículo e instanciar o objeto correspondente
-                if (tipo.equalsIgnoreCase("Carro")) {
-                    TipoCarro tipoCarro = TipoCarro.valueOf(dados[6].toUpperCase());
-                    Carro carro = new Carro(marca, modelo, potenciaCV, pesoKg, 0, preco, tipoCarro);
-                    garagem.add(carro);
-                } else if (tipo.equalsIgnoreCase("Mota")) {
-                    Mota mota = new Mota(marca, modelo, potenciaCV, pesoKg, 0, preco);
-                    garagem.add(mota);
-                }
-            }
-
-            scanner.close();
-            System.out.println("Veículos carregados com sucesso.");
-        } catch (FileNotFoundException e) {
-            System.out.println("Erro: Arquivo não encontrado. " + e.getMessage());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Erro ao definir o tipo de carro: " + e.getMessage());
-        }
-    }
-
-    // Métodos relacionados ao stock de itens podem ser adicionados conforme necessidade
+    // GETTERS & SETTERS
     public ArrayList<Veiculo> getGaragem() {
         return garagem;
     }
@@ -80,5 +38,135 @@ public class Oficina {
 
     public void setStock(ArrayList<ItemCorrida> stock) {
         this.stock = stock;
+    }
+
+
+
+
+    // METODO IMPRIMIR STOCK
+    public void imprimirStock() {
+        Random random = new Random();
+        int tamanho = stock.size();
+
+        if (tamanho == 0) {
+            System.out.println("Nenhum item disponível no estoque.");
+            return;
+        }
+
+        // Número de itens a imprimir (máximo 6 ou o tamanho do stock)
+        int quantidadeItens = Math.min(tamanho, 6);
+
+        ArrayList<ItemCorrida> itensSelecionados = new ArrayList<>();
+        while (itensSelecionados.size() < quantidadeItens) {
+            int indiceAleatorio = random.nextInt(tamanho);
+            ItemCorrida item = stock.get(indiceAleatorio);
+
+            // Certifica-se de não adicionar o mesmo item mais de uma vez
+            if (!itensSelecionados.contains(item)) {
+                itensSelecionados.add(item);
+            }
+        }
+
+        // Exibe os itens selecionados
+        System.out.println("Itens disponíveis no stock:");
+        for (ItemCorrida item : itensSelecionados) {
+            item.mostrarDetalhes();
+            System.out.println("______________");
+        }
+    }
+
+    // METODO IMPRIMIR GARAGEM
+    public void imprimirGaragem() {
+        if (garagem.size() == 0) {
+            System.out.println("Não existem veículos na garagem.");
+            return;
+        }
+
+        Random random = new Random();
+        ArrayList<Veiculo> veiculosSelecionados = new ArrayList<>();
+        int quantidadeVeiculos = Math.min(garagem.size(), 12);
+
+        while (veiculosSelecionados.size() < quantidadeVeiculos) {
+            int indexAleatorio = random.nextInt(garagem.size());
+            Veiculo veiculo = garagem.get(indexAleatorio);
+
+            if (!veiculosSelecionados.contains(veiculo)) {
+                veiculosSelecionados.add(veiculo);
+            }
+        }
+
+        System.out.println("Veículos disponíveis na garagem:");
+        int indice = 0;
+        for (Veiculo veiculo : veiculosSelecionados) {
+            System.out.println("Veículo #" + indice);
+            veiculo.mostrarDetalhes();
+            System.out.println("______________");
+            indice++;
+        }
+    }
+
+    // METODO VENDER ITEM
+    public void venderItem(Piloto piloto, Scanner scanner) {
+        if (stock.isEmpty()) {
+            System.out.println("Não há itens disponíveis para venda.");
+            return;
+        }
+
+        System.out.println("Itens disponíveis:");
+        imprimirStock();
+
+        System.out.println("Escolhe o item pelo índice:");
+        int opcao = scanner.nextInt();
+
+        // Verificação se a opção é válida
+        if (opcao < 0 || opcao >= stock.size()) {
+            System.out.println("Opção inválida.");
+            return;
+        }
+
+        ItemCorrida itemEscolhido = stock.get(opcao);
+
+        if (piloto.getFichasCorrida() >= itemEscolhido.getPrecoEmFichasCorrida()) {
+            piloto.setFichasCorrida(piloto.getFichasCorrida() - itemEscolhido.getPrecoEmFichasCorrida());
+            piloto.getVeiculoAtual().adicionarItem(itemEscolhido);
+            System.out.println("Compra efetuada com sucesso.");
+            stock.remove(itemEscolhido);
+        } else {
+            System.out.println("Não tens saldo suficiente!!!");
+        }
+    }
+
+
+
+
+    // METODO VENDER VEICULO
+    public void venderVeiculo(Piloto piloto, Scanner scanner) {
+        if (garagem.isEmpty()) {
+            System.out.println("Não há veículos disponíveis para venda.");
+            return;
+        }
+
+        System.out.println("Veículos disponíveis:");
+        imprimirGaragem();
+
+        System.out.println("Escolhe o veículo pelo índice:");
+        int opcao = scanner.nextInt();
+
+        // Verificação se a opção é válida
+        if (opcao < 0 || opcao >= garagem.size()) {
+            System.out.println("Opção inválida.");
+            return;
+        }
+
+        Veiculo veiculoEscolhido = garagem.get(opcao);
+
+        if (piloto.getFichasCorrida() >= veiculoEscolhido.getPreco()) {
+            piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
+            piloto.setVeiculoAtual(veiculoEscolhido);
+            System.out.println("Compra efetuada com sucesso.");
+            garagem.remove(veiculoEscolhido);
+        } else {
+            System.out.println("Não tens saldo suficiente!!!");
+        }
     }
 }

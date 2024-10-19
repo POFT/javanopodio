@@ -1,6 +1,7 @@
 package Entidades;
 
 import Itens.ItemCorrida;
+import Itens.TipoCarro;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,8 @@ public abstract class Veiculo {
         this.inventario = new ArrayList<>();
     }
 
+
+    // GETTERS & SETTERS
     public String getMarca() {
         return marca;
     }
@@ -47,7 +50,9 @@ public abstract class Veiculo {
     }
 
     public void setPotenciaCV(int potenciaCV) {
-        this.potenciaCV = potenciaCV;
+        if (potenciaCV > 0) {
+            this.potenciaCV = potenciaCV;
+        }
     }
 
     public double getPesokg() {
@@ -55,7 +60,9 @@ public abstract class Veiculo {
     }
 
     public void setPesokg(double pesokg) {
-        this.pesokg = pesokg;
+        if (pesokg > 0) {
+            this.pesokg = pesokg;
+        }
     }
 
     public int getDesgaste() {
@@ -63,7 +70,9 @@ public abstract class Veiculo {
     }
 
     public void setDesgaste(int desgaste) {
-        this.desgaste = desgaste;
+        if (desgaste >= 0) {
+            this.desgaste = desgaste;
+        }
     }
 
     public int getPreco() {
@@ -71,41 +80,57 @@ public abstract class Veiculo {
     }
 
     public void setPreco(int preco) {
-        this.preco = preco;
+        if (preco > 0) {
+            this.preco = preco;
+        }
     }
 
     public ArrayList<ItemCorrida> getInventario() {
         return inventario;
     }
 
+
+
+
+    // MÉTODO PARA ADICIONAR
     public void adicionarItem(ItemCorrida item) {
         inventario.add(item);
     }
 
-    //METODO PRINT DE TODOS OS  DETALHES DO VEICULO
-    public void mostrarDetalhes(){
-        System.out.println("Marca: " + this.marca);
-        System.out.println("Modelo: " + this.modelo);
-        System.out.println("Potencia: " + this.potenciaCV);
-        System.out.println("Peso(Kg): " + this.pesokg)  ;
-        System.out.println("Desgaste: " + this.desgaste);
-        System.out.println("Preço: " + this.preco);
+    // MÉTODO PARA REMOVER
+    public void removerItem(ItemCorrida item) {
+        inventario.remove(item);
     }
 
 
-    // MÉTODO PARA AUMENTAR DESGASTE DO VEÍCULO
+    //METODO PRINT DE TODOS OS  DETALHES DO VEICULO
+    public abstract void mostrarDetalhes();
+
+
+
+
+
+
+
+
+
+    // VALIDAR MÉTODO PARA AUMENTAR DESGASTE DO VEÍCULO
     public void aumentarDesgaste(int valor) {
         this.desgaste += valor;
     }
 
-    // MÉTODO PARA AUMENTAR POTÊNCIA DO VEÍCULO
+    // VALIDAR MÉTODO PARA AUMENTAR POTÊNCIA DO VEÍCULO
     public void aumentarPotencia(int valor) {
         this.potenciaCV += valor;
     }
 
-    // MÉTODO PARA REDUZIR PESO DO VEÍCULO
+    // VALIDAR MÉTODO PARA REDUZIR PESO DO VEÍCULO
     public void reduzirPeso(double valor) {
-        this.pesokg -= valor;
+        if (this.pesokg - valor >= 10) {
+            this.pesokg -= valor;
+        } else {
+            System.out.println("Ainda não inventaram a tecnologia para reduzir mais peso.");
+        }
     }
 
 }

@@ -20,7 +20,7 @@ public class Pista {
     }
 
 
-    // Getters e Setters
+    // GETTERS & SETTERS
     public String getNome() {
         return nome;
     }
@@ -69,19 +69,30 @@ public class Pista {
         this.momentosPista = momentosPista;
     }
 
-    // Método adicional para adicionar um momento à pista
+
+    // MÉTODO PARA ADICIONAR MOMENTO DA PISTA
     public void adicionarMomento(Momento momento) {
         this.momentosPista.add(momento);
     }
 
-    // Método adicional para remover um momento da pista
+    // MÉTODO PARA REMOVER MOMENTO DA PISTA
     public void removerMomento(Momento momento) {
         this.momentosPista.remove(momento);
     }
 
-    // Método para verificar se a pista tem momentos suficientes
+    // METODO PARA VALIDAR QUANTIDADE DE MOMENTOS
     public boolean temMomentosSuficientes() {
-        return this.momentosPista.size() >= 2;
+        return this.momentosPista.size() >= 5;
+    }
+
+
+    // METODO PARA LISTAR MOMENTOS
+    public void listarMomentos() {
+        System.out.println("Momentos da Pista " + nome + ":");
+        for (Momento momento : momentosPista) {
+            System.out.println("Momento: " + momento.getNome() + ", Atraso Peso: " + momento.getAtrasoPeso() +
+                    ", Atraso Potência: " + momento.getAtrasoPotencia());
+        }
     }
 
     // Método para imprimir os detalhes da pista
@@ -90,6 +101,9 @@ public class Pista {
         System.out.println("Distância por volta: " + this.distanciaVoltaM + " metros");
         System.out.println("Número de voltas: " + this.quantidadeVoltas);
         System.out.println("Tempo recorde: " + this.tempoRecordeSeg + " segundos");
+
+        double tempoTotal = tempoRecordeSeg * quantidadeVoltas;
+        System.out.println("Tempo estimado total (com base no recorde): " + tempoTotal + " segundos");
 
         System.out.println("Momentos da pista: ");
         for (Momento momento : momentosPista) {

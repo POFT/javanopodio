@@ -8,9 +8,9 @@ public class Mota extends Veiculo {
 
     private ArrayList<Habilidade> habilidadesMota;
 
-    public Mota(String marca, String modelo, int potenciaCV, double pesokg, int desgaste, int preco) {
+    public Mota(String marca, String modelo, int potenciaCV, double pesokg,int desgaste, int preco) {
         super(marca, modelo, potenciaCV, pesokg, desgaste, preco);
-        this.habilidadesMota = new ArrayList<Habilidade>();
+        this.habilidadesMota = new ArrayList<>();
     }
 
     public ArrayList<Habilidade> getHabilidadesMota() {
@@ -21,21 +21,25 @@ public class Mota extends Veiculo {
         this.habilidadesMota = habilidadesMota;
     }
 
-    public void adicionarHabilidade(Habilidade habilidade){
+    public void adicionarHabilidade(Habilidade habilidade) {
         habilidadesMota.add(habilidade);
+        System.out.println("Habilidade " + habilidade.getNome() + " adicionada com sucesso.");
     }
+
+
 
     @Override
     public void mostrarDetalhes() {
-        super.mostrarDetalhes();
-
-        if (this.habilidadesMota.isEmpty()) {
-            System.out.println("Nenhuma habilidade aplicada.");
-        } else {
-            System.out.println("Habilidades instaladas (" + this.habilidadesMota.size() + "): ");
-            for (Habilidade habilidade : habilidadesMota) {
-                habilidade.mostrarDetalhes();  // Chama o método mostrarDetalhes() de cada habilidade
+        System.out.println("Marca: " + this.getMarca());
+        System.out.println("Modelo: " + this.getModelo());
+        System.out.println("Potência: " + this.getPotenciaCV() + " CV");
+        if (!habilidadesMota.isEmpty()) {
+            System.out.println("Habilidades Aplicadas:");
+            for (Habilidade hab : habilidadesMota) {
+                hab.mostrarDetalhes();
             }
+        } else {
+            System.out.println("Nenhuma habilidade aplicada.");
         }
     }
 }
