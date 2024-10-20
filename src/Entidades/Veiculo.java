@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public abstract class Veiculo {
 
-
-    // ATRIBUTOS DA CLASS:
+    // ATTRIBUTES
     private String marca;
     private String modelo;
     private int potenciaCV;
@@ -17,6 +16,7 @@ public abstract class Veiculo {
     private int preco;
     private ArrayList<ItemCorrida> inventario;
 
+    // CONSTRUCTUR
     public Veiculo(String marca, String modelo, int potenciaCV, double pesokg, int desgaste, int preco) {
         this.marca = marca;
         this.modelo = modelo;
@@ -89,29 +89,33 @@ public abstract class Veiculo {
         return inventario;
     }
 
-
-
-
-    // MÉTODO PARA ADICIONAR
+    /**
+     * Método para adicionar item ao inventário (item é um objeto da classe ItemCorrida),
+     * @param item
+     */
     public void adicionarItem(ItemCorrida item) {
         inventario.add(item);
     }
 
-    // MÉTODO PARA REMOVER
+    /**
+     * Método para remover item do inventário,
+     * @param item
+     */
     public void removerItem(ItemCorrida item) {
         inventario.remove(item);
     }
 
-
-    //METODO PRINT DE TODOS OS  DETALHES DO VEICULO
+    /**
+     * Método mostrarDetalhes para apresentar os detalhes do Veiculo.
+     *  Nas subclasses será feito override para imprimir os detalhes específicos.
+     */
     public abstract void mostrarDetalhes();
 
-
-
-
-
-
-    // VALIDAR MÉTODO PARA AUMENTAR DESGASTE DO VEÍCULO
+    /**
+     * Método para aumentarDesgaste, é chamado na classe Piloto no método corrida,
+     *
+     * @param valor
+     */
     public void aumentarDesgaste(int valor) {
         this.desgaste += valor;
     }

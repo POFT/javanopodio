@@ -6,8 +6,10 @@ import java.util.ArrayList;
 
 public class Mota extends Veiculo {
 
+    // ATTRIBUTES
     private ArrayList<Habilidade> habilidadesMota;
 
+    // CONSTRUCTUR
     public Mota(String marca, String modelo, int potenciaCV, double pesokg,int desgaste, int preco) {
         super(marca, modelo, potenciaCV, pesokg, desgaste, preco);
         this.habilidadesMota = new ArrayList<>();
@@ -27,7 +29,9 @@ public class Mota extends Veiculo {
     }
 
 
-
+    /**
+     * Método mostrarDetalhes para apresentar os detalhes da Mota.
+     */
     @Override
     public void mostrarDetalhes() {
         System.out.println("[Preço: " + this.getPreco() + "] ");

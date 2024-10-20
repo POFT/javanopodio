@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 public class Carro extends Veiculo {
 
+    // ATTRIBUTES
     private TipoCarro tipoCarro;
     private ArrayList<Modificacao> kitCorrida;
 
+    // CONSTRUCTUR
     public Carro(String marca, String modelo, int potenciaCV, double pesokg,int desgaste, int preco, TipoCarro tipoCarro) {
         super(marca, modelo, potenciaCV, pesokg, desgaste, preco);
         this.tipoCarro = tipoCarro;
@@ -44,6 +46,9 @@ public class Carro extends Veiculo {
     }
 
 
+    /**
+     * Método mostrarDetalhes para apresentar os detalhes do Carro.
+     */
     @Override
     public void mostrarDetalhes() {
         System.out.println("[Preço: " + this.getPreco() + "] ");
