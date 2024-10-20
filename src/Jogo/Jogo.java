@@ -26,11 +26,15 @@ public class Jogo {
         int fichasIniciais = atribuirFichas(dificuldadeEscolhida);
 
 
-        System.out.println("\n******* RESUMO DA CRIAÇÃO *******");
-        System.out.println("Nome do piloto: " + nomeInserido);
-        System.out.println("Dificuldade escolhida: " + dificuldadeEscolhida);
-        System.out.println("Fichas iniciais atribuídas: " + fichasIniciais);
-        System.out.println("**********************************");
+        System.out.println("\n[RESUMO DA CRIAÇÃO DE JOGADOR]");
+        System.out.println("> Piloto: " + nomeInserido);
+        if(dificuldadeEscolhida == 1){
+            System.out.println("> Dificuldade: " + dificuldadeEscolhida + ". Fácil");
+        } else if (dificuldadeEscolhida == 2){
+            System.out.println("> Dificuldade: " + dificuldadeEscolhida + ". Díficil");
+        }
+        System.out.println("> Fichas de corrida: " + fichasIniciais);
+        System.out.println("*****************************************");
 
         return new Piloto(nomeInserido,fichasIniciais, null,0);
     }
@@ -44,7 +48,7 @@ public class Jogo {
         // LOOP ATÉ NOME VÁLIDO
         while (true) {
             System.out.println("\n[NOME] ");
-            System.out.println("Qual é o teu nome piloto?");
+            System.out.println("Qual é o teu nome?");
             System.out.print("> ");
             nome = input.nextLine().trim(); // Remove espaços em branco no início e no final
 
@@ -100,18 +104,19 @@ public class Jogo {
         return fichasCorrida;
     }
 
+    // METODO AUXILIAR PARA MENU OFICINA
     public void decisaoMenuOficina (Piloto piloto, Oficina oficina){
         Scanner input = new Scanner(System.in);
 
-        int opcao1= 0;
+        int opcao= 0;
         do {
             System.out.println("\n[DECISÃO]");
             System.out.println("[1]. OFICINA GARAGEM");
             System.out.println("[2]. OFICINA ITENS");
             System.out.println("[3]. PISTAS/CONTINUAR");
             System.out.print("> ");
-            opcao1 = input.nextInt();
-            switch (opcao1){
+            opcao = input.nextInt();
+            switch (opcao){
                 case 1:
                     oficina.venderVeiculo(piloto);
                     break;
@@ -124,7 +129,40 @@ public class Jogo {
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-        }while(opcao1!=3);
+        }while(opcao!=3);
+    }
+
+
+    // METODO AUXILIAR PARA MENU OFICINA
+    public void decisaoMenuCompetir (Piloto piloto, Pista pista){
+        Scanner input = new Scanner(System.in);
+
+        int opcao= 0;
+        do {
+            System.out.println("\n[DECISÃO]");
+            System.out.println("[1]. COMPETIR");
+            System.out.println("[2]. PISTAS/VOLTAR");
+            System.out.print("> ");
+            opcao = input.nextInt();
+            switch (opcao){
+                case 1:
+                    piloto.corrida(pista);
+                    break;
+                case 2:// VOLTAR
+                    System.out.println("___________________________");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
+        }while(opcao != 2);
+    }
+
+
+    // METODO AUXILIAR PARA ESPERAR ATE USER PRESSIONE ENTER
+    public static void esperarEnter(Scanner input) {
+        System.out.println("\n[Enter] para continuar...");
+        input.nextLine();
     }
 
 
@@ -240,8 +278,21 @@ public class Jogo {
 
 
 
+        System.out.println("\n[REGRAS]");
+        System.out.println("- Tens de vencer em 5 pistas para conquistar o pódio.");
+        System.out.println("- Cada pista tem um recorde definido, o teu objetivo é bater esse recorde.");
+        System.out.println("- Em competir em pistas ganhas fichas de corrida. ");
+        System.out.println("- Se bates o record da pista recebes 100% do prémio (fichas de corrida), caso contrário apenas 50%. ");
+        System.out.println("- Quando terminas uma pista, tens a opção de ir à Oficina.");
+        System.out.println("- Por cada volta na pista o teu veículo ganha desgaste (+20).");
+        System.out.println("- Na Oficina podes comprar itens(habilidades/modificações) ou um veículo novo.");
+        System.out.println("- Para realizar compras na Oficina precisas de fichas de corrida.");
+        System.out.println("\nO campeonato mais esperado começa agora!\n");
 
+        System.out.println("\n[ENTRAR NA GARAGEM]");
 
+        Scanner input = new Scanner(System.in);
+        esperarEnter(input);
         // OBRIGAR O USER A COMPRAR VEICULO NO INICIO DO JOGO
         System.out.println("\n******* Veículos Disponíveis na Oficina *******");
         oficina.venderVeiculo(piloto);
@@ -250,73 +301,125 @@ public class Jogo {
 
 
 
-        System.out.println("O campeonato mais esperado começa agora!");
-        System.out.println("Regras:");
-        System.out.println("-Tens de vencer em 5 pistas para conquistar o pódio.");
-        System.out.println("-Cada pista tem já um recorde, se bates esse recorde ganhas o prémio total(fichas), se não bates o recorde mas ganhas a corrida ganhas 50% do prémio total.");
-        System.out.println("-Após terminar cada pista podes ir à Oficina, onde podes fazer upgrades ao teu veículo ou comprar um novo.");
-        System.out.println("-Para realizar compras precisas de fichas.");
 
-
-        Scanner input = new Scanner(System.in);
         int opcao = 0;
         do {
             System.out.println("\n[CAMPEONATO JAVANOPODIO]\n");
-            System.out.println("Escolha a pista para competir:");
-            System.out.println("[1]. " + pista1.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
-            System.out.println("[2]. " + pista2.getNome() + " | Record Time: " +  pista2.getTempoRecordeSeg());
-            System.out.println("[3]. " + pista3.getNome() + " | Record Time: " +  pista3.getTempoRecordeSeg());
-            System.out.println("[4]. " + pista4.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
-            System.out.println("[5]. " + pista5.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
+
+            System.out.println("Veículo Atual:");
+            Veiculo veiculoAtual = piloto.getVeiculoAtual();
+            veiculoAtual.mostrarDetalhes();
+
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+            System.out.println("Escolha a pista para ver mais detalhes:");
+            System.out.println("[1]. " + pista1.getNome());
+            System.out.println("[2]. " + pista2.getNome());
+            System.out.println("[3]. " + pista3.getNome());
+            System.out.println("[4]. " + pista4.getNome());
+            System.out.println("[5]. " + pista5.getNome());
+            System.out.println("_");
+            System.out.println("[6]. OFICINA");
             System.out.print("> ");
             opcao = input.nextInt();
             switch (opcao) {
                 case 1:
-                    System.out.println("\n==========================\n");
+                    System.out.println("\n[DETALHE PISTA 1]\n");
                     pista1.imprimirDetalhes();
-                    System.out.println("\n==========================\n");
-                    piloto.corrida(pista1);
-                    piloto.mostrarDetalhes();
-                    decisaoMenuOficina(piloto,oficina);
-                break;
-                case 2:
-                    System.out.println("\n==========================\n");
-                    pista2.imprimirDetalhes();
-                    System.out.println("\n==========================\n");
-                    piloto.corrida(pista2);
-                    piloto.mostrarDetalhes();
-                    decisaoMenuOficina(piloto,oficina);
+                    decisaoMenuCompetir(piloto,pista1);
                     break;
-                    case 3:
-                        System.out.println("\n==========================\n");
-                        pista3.imprimirDetalhes();
-                        System.out.println("\n==========================\n");
-                        piloto.corrida(pista3);
-                        piloto.mostrarDetalhes();
-                        decisaoMenuOficina(piloto,oficina);
-                        break;
-                        case 4: // PISTA SILVERSTONE FINAL
-                            System.out.println("\n==========================\n");
-                            pista4.imprimirDetalhes();
-                            System.out.println("\n==========================\n");
-                            piloto.corrida(pista4);
-                            piloto.mostrarDetalhes();
-
-                            System.out.println("Parabéns!!! O Campeonato é teu... JAVA NO PODIO!!!");
-                            decisaoMenuOficina(piloto,oficina);
-                            break;
+                case 2:
+                    System.out.println("\n[DETALHE PISTA 2]\n");
+                    pista2.imprimirDetalhes();
+                    decisaoMenuCompetir(piloto,pista2);
+                    break;
+                case 3:
+                    System.out.println("\n[DETALHE PISTA 3]\n");
+                    pista3.imprimirDetalhes();
+                    decisaoMenuCompetir(piloto,pista3);
+                    break;
+                case 4:
+                    System.out.println("\n[DETALHE PISTA 4]\n");
+                    pista4.imprimirDetalhes();
+                    decisaoMenuCompetir(piloto,pista4);
+                    break;
                 case 5:
-                    System.out.println("\n==========================\n");
+                    System.out.println("\n[DETALHE PISTA 5]\n");
                     pista5.imprimirDetalhes();
-                    System.out.println("\n==========================\n");
-                    piloto.corrida(pista5);
-                    piloto.mostrarDetalhes();
+                    decisaoMenuCompetir(piloto,pista5);
+                    break;
+                case  6:
                     decisaoMenuOficina(piloto,oficina);
                     break;
                 default:
-                    System.out.println("");
+                    System.out.println("Opção inválida! Tente novamente.");
             }
-        } while (opcao!=0);
+        } while (opcao >= 1 || opcao <= 6);
+
+
+
+
+
+
+
+
+//        int opcao = 0;
+//        do {
+//            System.out.println("\n[CAMPEONATO JAVANOPODIO]\n");
+//            System.out.println("Escolha a pista para competir:");
+//            System.out.println("[1]. " + pista1.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
+//            System.out.println("[2]. " + pista2.getNome() + " | Record Time: " +  pista2.getTempoRecordeSeg());
+//            System.out.println("[3]. " + pista3.getNome() + " | Record Time: " +  pista3.getTempoRecordeSeg());
+//            System.out.println("[4]. " + pista4.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
+//            System.out.println("[5]. " + pista5.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
+//            System.out.print("> ");
+//            opcao = input.nextInt();
+//            switch (opcao) {
+//                case 1:
+//                    System.out.println("\n==========================\n");
+//                    pista1.imprimirDetalhes();
+//                    System.out.println("\n==========================\n");
+//                    piloto.corrida(pista1);
+//                    piloto.mostrarDetalhes();
+//                    decisaoMenuOficina(piloto,oficina);
+//                break;
+//                case 2:
+//                    System.out.println("\n==========================\n");
+//                    pista2.imprimirDetalhes();
+//                    System.out.println("\n==========================\n");
+//                    piloto.corrida(pista2);
+//                    piloto.mostrarDetalhes();
+//                    decisaoMenuOficina(piloto,oficina);
+//                    break;
+//                    case 3:
+//                        System.out.println("\n==========================\n");
+//                        pista3.imprimirDetalhes();
+//                        System.out.println("\n==========================\n");
+//                        piloto.corrida(pista3);
+//                        piloto.mostrarDetalhes();
+//                        decisaoMenuOficina(piloto,oficina);
+//                        break;
+//                        case 4: // PISTA SILVERSTONE FINAL
+//                            System.out.println("\n==========================\n");
+//                            pista4.imprimirDetalhes();
+//                            System.out.println("\n==========================\n");
+//                            piloto.corrida(pista4);
+//                            piloto.mostrarDetalhes();
+//
+//                            System.out.println("Parabéns!!! O Campeonato é teu... JAVA NO PODIO!!!");
+//                            decisaoMenuOficina(piloto,oficina);
+//                            break;
+//                case 5:
+//                    System.out.println("\n==========================\n");
+//                    pista5.imprimirDetalhes();
+//                    System.out.println("\n==========================\n");
+//                    piloto.corrida(pista5);
+//                    piloto.mostrarDetalhes();
+//                    decisaoMenuOficina(piloto,oficina);
+//                    break;
+//                default:
+//                    System.out.println("");
+//            }
+//        } while (opcao!=0);
 
 
 

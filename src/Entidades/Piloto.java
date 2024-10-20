@@ -50,46 +50,47 @@ public class Piloto {
 
     // METODO USAR ITEM COM LIMITE DE 2 POR CORRIDA
     public void usarItem(int maxItemsPorCorrida) {
-        ArrayList<ItemCorrida> inventario = veiculoAtual.getInventario();
 
-        // Verificação se o inventário está vazio
+        ArrayList<ItemCorrida> inventario = veiculoAtual.getInventario();
+        Scanner input = new Scanner(System.in);
+
+        // VALIDAÇÃO DE INVENTÁRIO (VAZIO)
         if (inventario.isEmpty()) {
-            System.out.println("O inventário está vazio! Nenhum item disponível para usar.");
+            System.out.println("O inventário está vazio!");
             return;
         }
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            int itemsUsados = 0;
-
-            while (itemsUsados < maxItemsPorCorrida && !inventario.isEmpty()) {
-                System.out.println("\n [INVENTÁRIO DE ITEMS] ");
-                for (int i = 0; i < inventario.size(); i++) {
-                    System.out.println((i + 1) + ". " + inventario.get(i).getNome());
-                }
-
-                System.out.println("Escolha o item inserindo a opção numérica correspondente: ");
-                System.out.print("\n> ");
-                int escolha = scanner.nextInt();
-
-                // Validação da escolha
-                if (escolha < 1 || escolha > inventario.size()) {
-                    System.out.println("Opção inválida! Tente novamente.");
-                    continue;  // Voltar ao início do loop e permitir uma nova escolha
-                }
-
-                ItemCorrida itemEscolhido = inventario.get(escolha - 1);
-                aplicarEfeitos(itemEscolhido);
-                inventario.remove(escolha - 1);
-                System.out.println("Item utilizado: " + itemEscolhido.getNome());
-
-                itemsUsados++;
+        int itemsUsados = 0;
+        while (itemsUsados < maxItemsPorCorrida && !inventario.isEmpty()) {
+            System.out.println("\n [INVENTÁRIO DE ITEMS] ");
+            for (int i = 0; i < inventario.size(); i++) {
+                System.out.println((i + 1) + ". " + inventario.get(i).getNome());
             }
 
-            if (itemsUsados >= maxItemsPorCorrida) {
+            System.out.println("Escolha o item inserindo a opção numérica correspondente: ");
+            System.out.print("\n> ");
+            int escolha = input.nextInt();
+
+            // VALIDAÇÃO ESCOLHA
+            if (escolha < 1 || escolha > inventario.size()) {
+                System.out.println("Opção inválida! Tente novamente.");
+                continue;  // Voltar ao início do loop e permitir uma nova escolha
+            }
+
+            ItemCorrida itemEscolhido = inventario.get(escolha - 1);
+            aplicarEfeitos(itemEscolhido);
+            inventario.remove(escolha - 1);
+            System.out.println("Item utilizado: " + itemEscolhido.getNome());
+
+
+            itemsUsados++;
+        }
+
+        if (itemsUsados >= maxItemsPorCorrida) {
                 System.out.println("Máximo de " + maxItemsPorCorrida + " itens por corrida foi alcançado.");
-            }
         }
     }
+
 
     // METODO AUXILIAR PARA APLICAR OS ITENS
     private void aplicarEfeitos(ItemCorrida item) {

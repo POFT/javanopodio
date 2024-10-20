@@ -102,8 +102,8 @@ public class Pista {
         System.out.println("Número de voltas: " + this.quantidadeVoltas);
         System.out.println("Tempo recorde: " + this.tempoRecordeSeg + " segundos");
 
-        double tempoTotal = tempoRecordeSeg * quantidadeVoltas;
-        System.out.println("Tempo estimado total (com base no recorde): " + tempoTotal + " segundos");
+//        double tempoTotal = tempoRecordeSeg * quantidadeVoltas;
+//        System.out.println("Tempo estimado total (com base no recorde): " + tempoTotal + " segundos");
 
         System.out.println("Momentos da pista: ");
         for (Momento momento : momentosPista) {

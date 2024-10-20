@@ -46,10 +46,13 @@ public class Carro extends Veiculo {
 
     @Override
     public void mostrarDetalhes() {
-        System.out.println("Marca: " + this.getMarca() + " | Modelo: " + this.getModelo() + " | Potência: " + this.getPotenciaCV() + " CV" + " | Tipo de Carro: " + this.tipoCarro);
-        System.out.println("[Preço: " + this.getPreco() + "]");
-        if (this.getDesgaste() > 0){
-            System.out.println("Desgaste: " + this.getDesgaste());
-        }
+        System.out.println("[Preço: " + this.getPreco() + "] ");
+        System.out.print("Marca: " + this.getMarca() + " | ");
+        System.out.print("Modelo: " + this.getModelo() + " | ");
+        System.out.print("Potência: " + this.getPotenciaCV() + "cv | ");
+        System.out.print("Peso: " + this.getPesokg() + "kg | ");
+        System.out.print("Desgaste: " + this.getDesgaste()+ " | ");
+        System.out.print("Tipo de Carro: " + this.tipoCarro);
+        System.out.println(" ");
     }
 }

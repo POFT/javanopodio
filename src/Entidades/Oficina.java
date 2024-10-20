@@ -4,8 +4,6 @@ import Itens.ItemCorrida;
 import Itens.Modificacao;
 import Itens.TipoCarro;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -67,7 +65,7 @@ public class Oficina {
         for (ItemCorrida item : itensSelecionados) {
             System.out.println("Item #" + indice);
             item.mostrarDetalhes();
-            System.out.println("______________");
+            System.out.println("____________________________");
             indice++;
         }
         return itensSelecionados;
@@ -75,7 +73,7 @@ public class Oficina {
 
     // METODO VENDER ITEM
     public void venderItem(Piloto piloto) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         if (stock.isEmpty()) {
             System.out.println("Não há itens disponíveis para venda.");
@@ -90,7 +88,7 @@ public class Oficina {
             System.out.println("Fichas: " + piloto.getFichasCorrida());
 
             System.out.println("Escolhe o item pelo índice:");
-            int opcao = scanner.nextInt();
+            int opcao = input.nextInt();
 
             // Verificação se a opção é válida
             if (opcao < 0 || opcao >= stock.size()) {
@@ -137,7 +135,7 @@ public class Oficina {
         for (Veiculo veiculo : veiculosSelecionados) {
             System.out.println("Veículo [" + indice + "]");
             veiculo.mostrarDetalhes();
-            System.out.println("______________");
+            System.out.println("____________________________");
             indice++;
         }
         return veiculosSelecionados;
@@ -147,7 +145,7 @@ public class Oficina {
 
     // METODO VENDER VEICULO
     public void venderVeiculo(Piloto piloto) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         if (garagem.isEmpty()) {
             System.out.println("Não há veículos disponíveis para venda.");
@@ -159,7 +157,7 @@ public class Oficina {
             System.out.println("[Fichas disponíveis: " + piloto.getFichasCorrida() + "]");
             System.out.println("Escolhe o veículo inserindo a opção numérica correspondente:");
             System.out.print("> ");
-            int opcao = scanner.nextInt();
+            int opcao = input.nextInt();
 
             // Verificação se a opção é válida
             if (opcao < 0 || opcao >= garagemTemp.size()) {
