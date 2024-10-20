@@ -104,7 +104,7 @@ public class Jogo {
         return fichasCorrida;
     }
 
-    // METODO AUXILIAR PARA MENU OFICINA
+    // METODO PARA MENU OFICINA/DECISÃO
     public void decisaoMenuOficina (Piloto piloto, Oficina oficina){
         Scanner input = new Scanner(System.in);
 
@@ -133,7 +133,7 @@ public class Jogo {
     }
 
 
-    // METODO AUXILIAR PARA MENU OFICINA
+    // METODO PARA MENU COMPETIR/DECISÃO
     public void decisaoMenuCompetir (Piloto piloto, Pista pista){
         Scanner input = new Scanner(System.in);
 
@@ -147,6 +147,7 @@ public class Jogo {
             switch (opcao){
                 case 1:
                     piloto.corrida(pista);
+                    pista.listarMomentos();
                     break;
                 case 2:// VOLTAR
                     System.out.println("___________________________");
@@ -159,7 +160,7 @@ public class Jogo {
     }
 
 
-    // METODO AUXILIAR PARA ESPERAR ATE USER PRESSIONE ENTER
+    // METODO PARA ESPERAR ATE USER PRESSIONE ENTER
     public static void esperarEnter(Scanner input) {
         System.out.println("\n[Enter] para continuar...");
         input.nextLine();
@@ -173,18 +174,18 @@ public class Jogo {
         Oficina oficina = new Oficina();
 
         // Instanciar veículos (16 no total, 10 carros e 6 motas)
-        Carro carro1 = new Carro("Toyota", "GR86", 234, 1276, 0, 2000, TipoCarro.GT);
+        Carro carro1 = new Carro("Toyota", "GR86", 234, 1276, 0, 3000, TipoCarro.GT);
         Carro carro2 = new Carro("Mercedes", "AMG A45 S 4Matic", 421, 1455, 0, 125000, TipoCarro.GT);
-        Carro carro3 = new Carro("BMW", "M5 CS", 625, 1825, 0, 156500, TipoCarro.GT);
+        Carro carro3 = new Carro("BMW", "M5 CS", 625, 1825, 0, 160000, TipoCarro.GT);
         Carro carro4 = new Carro("Ferrari", "SF90 Stradale", 1000, 1435, 0, 300000, TipoCarro.GT);
-        Carro carro5 = new Carro("Ferrari", "F8", 720, 1435, 0, 300000, TipoCarro.F1); //*
-        Carro carro6 = new Carro("McLaren", "720S", 710, 1419, 0, 299000, TipoCarro.F1);
-        Carro carro7 = new Carro("Red Bull Racing", "RB15", 900, 1419, 0, 300000, TipoCarro.F1); //*
+        Carro carro5 = new Carro("Ferrari", "F8", 720, 1435, 0, 200000, TipoCarro.F1); //*
+        Carro carro6 = new Carro("McLaren", "720S", 710, 1419, 0, 300000, TipoCarro.F1);
+        Carro carro7 = new Carro("Red Bull Racing", "RB15", 1000, 1419, 0, 1000, TipoCarro.F1); //*
         Carro carro8 = new Carro("Ford", "Mustang", 450, 1650, 0, 60000, TipoCarro.RALLY);
-        Carro carro9 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 65000, TipoCarro.RALLY);
-        Carro carro10 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 65000, TipoCarro.RALLY);
+        Carro carro9 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 66000, TipoCarro.RALLY);
+        Carro carro10 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 66000, TipoCarro.RALLY);
 
-        Mota mota1 = new Mota("Yamaha", "MT-125", 15, 142, 0, 2000);
+        Mota mota1 = new Mota("Yamaha", "MT-125", 250, 120, 0, 2000);
         Mota mota2 = new Mota("Yamaha", "R1", 200, 201, 0, 12000);
         Mota moto3 = new Mota("Honda", "CBR1000", 217, 201, 0, 13000);
         Mota moto4 = new Mota("Kawasaki", "Ninja 1000", 300, 235, 0, 25000);
@@ -240,11 +241,11 @@ public class Jogo {
 
 
         // Instanciar pistas
-        Pista pista1 = new Pista("Autódromo do Estoril", 120.5, 118.3, 4300, 10);
-        Pista pista2 = new Pista("Circuit de Monaco", 95.2, 92.8, 3500, 8);
-        Pista pista3 = new Pista("Monza", 150.4, 133.0, 4800, 12);
-        Pista pista4 = new Pista("Silverstone", 150.7, 148.5, 5000, 5); //*
-        Pista pista5 = new Pista("Circuit Gilles Villeneuve", 105.9, 104.3, 4300, 9);
+        Pista pista1 = new Pista("Autódromo do Estoril", 120.5, 118.3, 4000, 7);
+        Pista pista2 = new Pista("Circuit de Monaco", 95.2, 92.8, 3500, 9);
+        Pista pista3 = new Pista("Monza", 150.4, 133.0, 4500, 10);
+        Pista pista4 = new Pista("Silverstone", 150.7, 148.5, 4000,10);
+        Pista pista5 = new Pista("Circuit Gilles Villeneuve", 105.9, 104.3, 5800, 5);
 
         // Instanciar momentos para as pistas
         Momento momento1 = new Momento("Curva em U", 1.5, 0.8);
@@ -277,7 +278,7 @@ public class Jogo {
         pista5.adicionarMomento(momento2);
 
 
-
+        // REGRAS DO JOGO
         System.out.println("\n[REGRAS]");
         System.out.println("- Tens de vencer em 5 pistas para conquistar o pódio.");
         System.out.println("- Cada pista tem um recorde definido, o teu objetivo é bater esse recorde.");
@@ -298,17 +299,16 @@ public class Jogo {
         oficina.venderVeiculo(piloto);
 
 
-
-
-
-
         int opcao = 0;
         do {
             System.out.println("\n[CAMPEONATO JAVANOPODIO]\n");
 
+
+            piloto.mostrarDetalhes();
             System.out.println("Veículo Atual:");
             Veiculo veiculoAtual = piloto.getVeiculoAtual();
             veiculoAtual.mostrarDetalhes();
+
 
             System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             System.out.println("Escolha a pista para ver mais detalhes:");
@@ -358,68 +358,6 @@ public class Jogo {
 
 
 
-
-
-
-
-//        int opcao = 0;
-//        do {
-//            System.out.println("\n[CAMPEONATO JAVANOPODIO]\n");
-//            System.out.println("Escolha a pista para competir:");
-//            System.out.println("[1]. " + pista1.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
-//            System.out.println("[2]. " + pista2.getNome() + " | Record Time: " +  pista2.getTempoRecordeSeg());
-//            System.out.println("[3]. " + pista3.getNome() + " | Record Time: " +  pista3.getTempoRecordeSeg());
-//            System.out.println("[4]. " + pista4.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
-//            System.out.println("[5]. " + pista5.getNome() + " | Record Time: " +  pista1.getTempoRecordeSeg());
-//            System.out.print("> ");
-//            opcao = input.nextInt();
-//            switch (opcao) {
-//                case 1:
-//                    System.out.println("\n==========================\n");
-//                    pista1.imprimirDetalhes();
-//                    System.out.println("\n==========================\n");
-//                    piloto.corrida(pista1);
-//                    piloto.mostrarDetalhes();
-//                    decisaoMenuOficina(piloto,oficina);
-//                break;
-//                case 2:
-//                    System.out.println("\n==========================\n");
-//                    pista2.imprimirDetalhes();
-//                    System.out.println("\n==========================\n");
-//                    piloto.corrida(pista2);
-//                    piloto.mostrarDetalhes();
-//                    decisaoMenuOficina(piloto,oficina);
-//                    break;
-//                    case 3:
-//                        System.out.println("\n==========================\n");
-//                        pista3.imprimirDetalhes();
-//                        System.out.println("\n==========================\n");
-//                        piloto.corrida(pista3);
-//                        piloto.mostrarDetalhes();
-//                        decisaoMenuOficina(piloto,oficina);
-//                        break;
-//                        case 4: // PISTA SILVERSTONE FINAL
-//                            System.out.println("\n==========================\n");
-//                            pista4.imprimirDetalhes();
-//                            System.out.println("\n==========================\n");
-//                            piloto.corrida(pista4);
-//                            piloto.mostrarDetalhes();
-//
-//                            System.out.println("Parabéns!!! O Campeonato é teu... JAVA NO PODIO!!!");
-//                            decisaoMenuOficina(piloto,oficina);
-//                            break;
-//                case 5:
-//                    System.out.println("\n==========================\n");
-//                    pista5.imprimirDetalhes();
-//                    System.out.println("\n==========================\n");
-//                    piloto.corrida(pista5);
-//                    piloto.mostrarDetalhes();
-//                    decisaoMenuOficina(piloto,oficina);
-//                    break;
-//                default:
-//                    System.out.println("");
-//            }
-//        } while (opcao!=0);
 
 
 

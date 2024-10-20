@@ -111,9 +111,6 @@ public abstract class Veiculo {
 
 
 
-
-
-
     // VALIDAR MÉTODO PARA AUMENTAR DESGASTE DO VEÍCULO
     public void aumentarDesgaste(int valor) {
         this.desgaste += valor;

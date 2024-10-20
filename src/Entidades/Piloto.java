@@ -109,10 +109,11 @@ public class Piloto {
     // MÉTODO PARA CALCULAR O TEMPO TOTAL DA CORRIDA E VERIFICAR O RECORDE
     public double corrida(Pista pista) {
         double tempoTotal = 0.0;
-        //double desgaste = 0.0;
-        double desgaste = veiculoAtual.getDesgaste(); // CORREÇÃO
         int numeroVoltas = pista.getQuantidadeVoltas();
         double tempoRecorde = pista.getTempoRecordeSeg();
+
+        // Desgaste inicial do veículo
+        double desgaste = veiculoAtual.getDesgaste(); // CORREÇÃO
 
         for (int i = 0; i < numeroVoltas; i++) {
             double distanciaVolta = pista.getDistanciaVoltaM();
@@ -132,26 +133,30 @@ public class Piloto {
                 atrasoTotal += atraso;
             }
 
-
+            // Soma o tempo da volta mais o atraso total
             tempoTotal += tempoVolta + atrasoTotal;
-            // Auto desgaste em cada volta:
-            desgaste += 20;
+
+            // Incrementar o desgaste por volta
+            veiculoAtual.aumentarDesgaste(20);
+            desgaste = veiculoAtual.getDesgaste();
+
+            // Se valor de desgaste ultrapassa o limite (1000)
+            if (desgaste > 1000) {
+                System.out.println("O teu veículo avariou durante a corrida!");
+                break; // AVARIADO
+            }
+
         }
 
         System.out.println("O teu Tempo total: " + tempoTotal + " segundos");
-
-        if (desgaste > 1000) {
-            System.out.println("O teu veículo avariou durante a corrida!");
-        }
-
         // Verificar se o piloto bateu o recorde da pista
         if (tempoTotal < tempoRecorde && desgaste < 1000) {
-            System.out.println("Parabéns! Bateu o recorde da pista! ");
-            this.fichasCorrida += 1000; // Bônus por bater o recorde
+            System.out.println("\nParabéns! Bateu o recorde da pista! ");
+            this.fichasCorrida += 1000; // Prémio total
             this.vitorias++;
-            System.out.println("Prémio: 1000/1000");
+            System.out.println("Prémio: 1000/1000\n");
         } else {
-            this.fichasCorrida += 500; // Recompensa parcial
+            this.fichasCorrida += 500; // Prémio parcial
             System.out.println("Terminaste a corrida mas o recorde não é teu!");
             System.out.println("Prémio: 500/1000");
         }
@@ -163,18 +168,18 @@ public class Piloto {
 
 
     public void mostrarDetalhes() {
-        System.out.println("***** DETALHES DO PILOTO *****");
+        System.out.println("\n***** DETALHES DO PILOTO *****");
         System.out.println("Nome do piloto: " + this.nome);
         System.out.println("Fichas de corrida: " + this.fichasCorrida);
         System.out.println("Vitórias: " + this.vitorias);
 
-        if (this.veiculoAtual != null) {
-            System.out.println("\n[DETALHES DO VEÍCULO ATUAL]");
-            veiculoAtual.mostrarDetalhes(); // Exibe os detalhes do veículo atual
-        } else {
-            System.out.println("\nNenhum veículo atual atribuído ao piloto.");
-        }
-        System.out.println("******************************");
+//        if (this.veiculoAtual != null) {
+//            System.out.println("\n[DETALHES DO VEÍCULO ATUAL]");
+//            veiculoAtual.mostrarDetalhes(); // Exibe os detalhes do veículo atual
+//        } else {
+//            System.out.println("\nNenhum veículo atual atribuído ao piloto.");
+//        }
+        System.out.println("******************************\n");
     }
 
 

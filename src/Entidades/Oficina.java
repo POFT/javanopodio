@@ -71,7 +71,7 @@ public class Oficina {
         return itensSelecionados;
     }
 
-    // METODO VENDER ITEM
+    // METODO VENDER ITEM DO STOCK
     public void venderItem(Piloto piloto) {
         Scanner input = new Scanner(System.in);
 
@@ -151,10 +151,18 @@ public class Oficina {
             System.out.println("Não há veículos disponíveis para venda.");
             return;
         }
+        // Valor de retoma existe à condição se existe veiculo atual(true), se não é 0(false)
+        int valorRetoma = piloto.getVeiculoAtual() != null ? piloto.getVeiculoAtual().getPreco() / 2 : 0;
 
         do {
             ArrayList<Veiculo> garagemTemp = imprimirGaragem();
             System.out.println("[Fichas disponíveis: " + piloto.getFichasCorrida() + "]");
+            if (piloto.getVeiculoAtual()!=null){
+                System.out.println("[Valor de retoma: " + valorRetoma + " fichas]");
+                System.out.println("Podes gastar até " + (piloto.getFichasCorrida() + valorRetoma));
+            }
+
+
             System.out.println("Escolhe o veículo inserindo a opção numérica correspondente:");
             System.out.print("> ");
             int opcao = input.nextInt();
@@ -167,7 +175,8 @@ public class Oficina {
 
             Veiculo veiculoEscolhido = garagemTemp.get(opcao);
 
-            if (piloto.getFichasCorrida() >= veiculoEscolhido.getPreco()) {
+
+            if (piloto.getFichasCorrida() + valorRetoma >= veiculoEscolhido.getPreco()) {
                 piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
                 piloto.setVeiculoAtual(veiculoEscolhido);
                 System.out.println("Compra efetuada com sucesso. [" + veiculoEscolhido.getMarca() + " " + veiculoEscolhido.getModelo()+"]");
