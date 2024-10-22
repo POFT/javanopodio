@@ -7,6 +7,10 @@ import Itens.Modificacao;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A Classe Piloto corresponde à personagem do jogo, definida pelo utilizador, guarda as informações relacionadas com o Piloto,
+ * participa em corridas, compra ou modifica o veiculo.
+ */
 public class Piloto {
     private String nome;
     private int fichasCorrida;

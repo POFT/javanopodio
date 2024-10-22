@@ -5,6 +5,10 @@ import Itens.TipoCarro;
 
 import java.util.ArrayList;
 
+/**
+ * A Classe Veiculo serve como uma base abstrata para todos os tipos de veículos no jogo,
+ * permite a criação de diferentes veículos, como carros e motos.
+ */
 public abstract class Veiculo {
 
     // ATTRIBUTES

@@ -4,6 +4,9 @@ import Itens.Habilidade;
 
 import java.util.ArrayList;
 
+/**
+ * A Classe Mota é uma subclasse da classe abstrata Veiculo.
+ */
 public class Mota extends Veiculo {
 
     // ATTRIBUTES

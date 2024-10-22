@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * A Classe Oficina é a responsável por fornecer veiculo e itens para o jogador/personagem.
+ */
 public class Oficina {
 
     private ArrayList<Veiculo> garagem;

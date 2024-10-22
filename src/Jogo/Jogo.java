@@ -6,6 +6,11 @@ import Itens.Modificacao;
 import Itens.TipoCarro;
 import java.util.Scanner;
 
+
+/**
+ * Controlador principal com a dinâmica do jogo,
+ * responsável por gerir as entidades Piloto, Oficina, Veiculo, Pistas.
+ */
 public class Jogo {
 
 
@@ -40,7 +45,10 @@ public class Jogo {
     }
 
 
-    //METODO AUXILIAR DEFINIR NOME DO PILOTO
+    /**
+     * Método auxiliar para definir nome do piloto
+     * @return
+     */
     public String definirNomePiloto() {
         Scanner input = new Scanner(System.in);
         String nome = "";
@@ -62,7 +70,10 @@ public class Jogo {
         return nome;
     }
 
-    //METODO AUXILIAR DEFINIR DIFICULDADE
+    /**
+     * Método auxiliar para definir dificuldade
+     * @return
+     */
     public int escolherDificuldade() {
         Scanner input = new Scanner(System.in);
         int dificuldade = 0;
@@ -89,7 +100,11 @@ public class Jogo {
         return dificuldade;
     }
 
-    //METODO AUXILIAR DEFINIR FICHAS
+    /**
+     * Método auxiliar para atribuir fichas de corrida de acordo com dificuldade escolhida
+     * @param dificuldade
+     * @return
+     */
     public int atribuirFichas(int dificuldade) {
         int fichasCorrida = 0;
 
@@ -104,7 +119,11 @@ public class Jogo {
         return fichasCorrida;
     }
 
-    // METODO PARA MENU OFICINA/DECISÃO
+    /**
+     * Método com menu de opções/navegação no jogo (Oficina, Inventário, Pistas/voltar)
+     * @param piloto
+     * @param oficina
+     */
     public void decisaoMenuOficina (Piloto piloto, Oficina oficina){
         Scanner input = new Scanner(System.in);
 
@@ -137,7 +156,12 @@ public class Jogo {
     }
 
 
-    // METODO PARA MENU COMPETIR/DECISÃO
+    /**
+     * Método com menu de opções/navegação no jogo (competir, Pistas/voltar)
+     * @param piloto
+     * @param pista
+     * @return
+     */
     public double decisaoMenuCompetir(Piloto piloto, Pista pista) {
         Scanner input = new Scanner(System.in);
         int opcao = 0;
@@ -170,7 +194,10 @@ public class Jogo {
     }
 
 
-    // METODO PARA ESPERAR ATE USER PRESSIONE ENTER
+    /**
+     * Método para avançar após pressionar enter,
+     * @param input
+     */
     public static void esperarEnter(Scanner input) {
         System.out.println("\n[Enter] para continuar...");
         input.nextLine();
@@ -195,7 +222,7 @@ public class Jogo {
         Carro carro9 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 66000, TipoCarro.RALLY);
         Carro carro10 = new Carro("Chevrolet", "Camaro", 650, 1690, 0, 66000, TipoCarro.RALLY);
 
-        Mota mota1 = new Mota("Yamaha", "MT-125", 250, 120, 0, 2000);
+        Mota mota1 = new Mota("Yamaha", "MT-125", 250, 120, 0, 1000);
         Mota mota2 = new Mota("Yamaha", "R1", 200, 201, 0, 12000);
         Mota moto3 = new Mota("Honda", "CBR1000", 217, 201, 0, 13000);
         Mota moto4 = new Mota("Kawasaki", "Ninja 1000", 300, 235, 0, 25000);

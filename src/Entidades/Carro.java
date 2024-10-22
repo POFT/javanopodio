@@ -5,6 +5,9 @@ import Itens.TipoCarro;
 
 import java.util.ArrayList;
 
+/**
+ * A Classe Carro é uma subclasse da classe abstrata Veiculo.
+ */
 public class Carro extends Veiculo {
 
     // ATTRIBUTES

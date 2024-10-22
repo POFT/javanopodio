@@ -2,6 +2,9 @@ package Itens;
 
 import Entidades.Veiculo;
 
+/**
+ * A Classe abstrata ItemCorrida tem como objetivo representar os itens que podem ser utilizados para modificar ou melhorar o desempenho de um veículo durante o jogo.
+ */
 public abstract class ItemCorrida {
 
     private String nome;

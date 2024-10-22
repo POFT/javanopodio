@@ -1,5 +1,8 @@
 package Itens;
 
+/**
+ * A classe Habilidade é uma subclasse da classe abstrata ItemCorrida e tem como objetivo representar um item no jogo que proporciona aumento de potência para o veículo.
+ */
 public class Habilidade extends ItemCorrida{
 
     private int aumentoPotencia;

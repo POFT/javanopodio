@@ -1,5 +1,8 @@
 package Entidades;
 
+/**
+ * A Classe Momento tem como objetivo representar os eventos específicos ou características de uma pista.
+ */
 public class Momento {
 
     private String nome;

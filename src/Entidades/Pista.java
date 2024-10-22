@@ -2,6 +2,10 @@ package Entidades;
 
 import java.util.ArrayList;
 
+/**
+ * A Classe Pista que guarda as informações da Pista,
+ * responsável por apresentar os detalhes e os momentos.
+ */
 public class Pista {
     private String nome;
     private double tempo;
@@ -70,7 +74,10 @@ public class Pista {
     }
 
 
-    // MÉTODO PARA ADICIONAR MOMENTO DA PISTA
+    /**
+     * Método para adicionar os momentos instanciados à Pista
+     * @param momento
+     */
     public void adicionarMomento(Momento momento) {
         this.momentosPista.add(momento);
     }

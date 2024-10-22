@@ -2,6 +2,9 @@ package Itens;
 
 import java.util.ArrayList;
 
+/**
+ * A classe Modificacao é uma subclasse da classe abstrata ItemCorrida e tem como objetivo representar um item no jogo que reduz o desgaste e/ou o peso do veículo.
+ */
 public class Modificacao extends ItemCorrida {
 
     private int diminuicaoDesgaste;
