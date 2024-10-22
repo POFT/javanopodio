@@ -76,8 +76,9 @@ public class Pista {
     }
 
 
-
-    // METODO PARA LISTAR MOMENTOS
+    /**
+     * Método para listar os momentos da pista
+     */
     public void listarMomentos() {
         System.out.println("\nMomentos da Pista " + nome + ":");
         for (Momento momento : momentosPista) {
@@ -86,7 +87,10 @@ public class Pista {
         }
     }
 
-    // Método para imprimir os detalhes da pista
+    /**
+     * Método para apresentar os detalhes da pista,
+     * utilizo na apresentação da pista no menu simuladorCorridas.
+     */
     public void imprimirDetalhes() {
         System.out.println("Nome da pista: " + this.nome);
         System.out.println("Distância por volta: " + this.distanciaVoltaM + " metros");

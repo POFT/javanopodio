@@ -20,7 +20,10 @@ public class Habilidade extends ItemCorrida{
         }
     }
 
-    // Implementação do método mostrarDetalhes
+
+    /**
+     * Método para apresentar habilidades
+     */
     @Override
     public void mostrarDetalhes() {
         System.out.println("Nome da Habilidade: " + this.getNome());

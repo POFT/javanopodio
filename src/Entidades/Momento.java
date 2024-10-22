@@ -36,6 +36,10 @@ public class Momento {
         this.atrasoPotencia = atrasoPotencia;
     }
 
+    /**
+     * Método para mostrar os momentos da pista
+     * @return
+     */
     @Override
     public String toString() {
         return "Momento: " + nome +

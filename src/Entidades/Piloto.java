@@ -46,9 +46,10 @@ public class Piloto {
     }
 
 
-
-
-    // METODO USAR ITEM COM LIMITE DE 2 POR CORRIDA
+    /**
+     * Método para apresentar/utilizar o item no inventário do Piloto,
+     * @param maxItemsPorCorrida
+     */
     public void usarItem(int maxItemsPorCorrida) {
 
         ArrayList<ItemCorrida> inventario = veiculoAtual.getInventario();
@@ -92,7 +93,10 @@ public class Piloto {
     }
 
 
-    // METODO AUXILIAR PARA APLICAR OS ITENS
+    /**
+     * Método auxiliar para aplicarEfeitos no método usarItem,
+     * @param item
+     */
     private void aplicarEfeitos(ItemCorrida item) {
 
         if (item instanceof Modificacao){
@@ -106,7 +110,11 @@ public class Piloto {
     }
 
 
-    // MÉTODO PARA CALCULAR O TEMPO TOTAL DA CORRIDA E VERIFICAR O RECORDE
+    /**
+     * Método para calcular o tempo total da corrida e validar se recorde da pista é batido,
+     * @param pista
+     * @return tempoTotal
+     */
     public double corrida(Pista pista) {
         double tempoTotal = 0.0;
         int numeroVoltas = pista.getQuantidadeVoltas();
@@ -151,6 +159,7 @@ public class Piloto {
         System.out.println("O teu Tempo total: " + tempoTotal + " segundos");
         // Verificar se o piloto bateu o recorde da pista
         if (tempoTotal < tempoRecorde && desgaste < 1000) {
+            // Se tempo do piloto na pista for inferior ao tempo recorde da pista
             System.out.println("\nParabéns! Bateu o recorde da pista! ");
             this.fichasCorrida += 1000; // Prémio total
             this.vitorias++;
@@ -165,20 +174,14 @@ public class Piloto {
     }
 
 
-
-
+    /**
+     * Método para apresentar os detalhes do piloto
+     */
     public void mostrarDetalhes() {
         System.out.println("\n***** DETALHES DO PILOTO *****");
         System.out.println("Nome do piloto: " + this.nome);
         System.out.println("Fichas de corrida: " + this.fichasCorrida);
         System.out.println("Vitórias: " + this.vitorias);
-
-//        if (this.veiculoAtual != null) {
-//            System.out.println("\n[DETALHES DO VEÍCULO ATUAL]");
-//            veiculoAtual.mostrarDetalhes(); // Exibe os detalhes do veículo atual
-//        } else {
-//            System.out.println("\nNenhum veículo atual atribuído ao piloto.");
-//        }
         System.out.println("******************************\n");
     }
 

@@ -113,7 +113,8 @@ public class Jogo {
             System.out.println("\n[DECISÃO]");
             System.out.println("[1]. OFICINA GARAGEM");
             System.out.println("[2]. OFICINA ITENS");
-            System.out.println("[3]. PISTAS/CONTINUAR");
+            System.out.println("[3]. PILOTO ITENS");
+            System.out.println("[4]. PISTAS/CONTINUAR");
             System.out.print("> ");
             opcao = input.nextInt();
             switch (opcao){
@@ -123,13 +124,16 @@ public class Jogo {
                 case 2:
                     oficina.venderItem(piloto);
                     break;
-                case 3: //Voltar ao menu anterior
+                case 3:
+                    piloto.usarItem(2);
+                    break;
+                case 4:
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-        }while(opcao!=3);
+        }while(opcao!=4);
     }
 
 

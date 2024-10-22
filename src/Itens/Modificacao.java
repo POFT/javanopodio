@@ -48,7 +48,9 @@ public class Modificacao extends ItemCorrida {
     }
 
 
-
+    /**
+     * Método para apresentar as modificações
+     */
     @Override
     public void mostrarDetalhes() {
         System.out.println("Nome da Modificação: " + this.getNome());

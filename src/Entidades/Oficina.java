@@ -39,9 +39,10 @@ public class Oficina {
     }
 
 
-
-
-    // METODO IMPRIMIR STOCK
+    /**
+     * Método auxiliar para imprimir stock da oficina no método venderItem,
+     * @return array random de 6 itens max.
+     */
     public ArrayList<ItemCorrida> imprimirStock() {
         if (stock == null || stock.isEmpty()) {
             System.out.println("Não existem itens na garagem.");
@@ -71,7 +72,10 @@ public class Oficina {
         return itensSelecionados;
     }
 
-    // METODO VENDER ITEM DO STOCK
+    /**
+     * Método para vender/comprar item na Oficina(Stock)
+     * @param piloto
+     */
     public void venderItem(Piloto piloto) {
         Scanner input = new Scanner(System.in);
 
@@ -111,7 +115,10 @@ public class Oficina {
         System.out.println("Apenas é possível comprar " + maxItens + " itens neste acesso.");
     }
 
-    // METODO IMPRIMIR GARAGEM
+    /**
+     * Método auxiliar para imprimir garagem da oficina no método venderVeiculo,
+     * @return array random de 12 veiculos max.
+     */
     public ArrayList<Veiculo> imprimirGaragem() {
         if (garagem == null || garagem.isEmpty()) {
             System.out.println("Não existem veículos na garagem.");
@@ -142,8 +149,10 @@ public class Oficina {
     }
 
 
-
-    // METODO VENDER VEICULO
+    /**
+     * Método para vender/comprar veiculo na Oficina(garagem)
+     * @param piloto
+     */
     public void venderVeiculo(Piloto piloto) {
         Scanner input = new Scanner(System.in);
 
@@ -188,7 +197,6 @@ public class Oficina {
 
 
         }while (piloto.getVeiculoAtual()==null);
-
 
     }
 }
