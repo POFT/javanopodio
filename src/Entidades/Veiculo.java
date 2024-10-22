@@ -112,20 +112,28 @@ public abstract class Veiculo {
     public abstract void mostrarDetalhes();
 
     /**
-     * Método para aumentarDesgaste, é chamado na classe Piloto no método corrida,
-     *
-     * @param valor
+     * Método para aumentarDesgaste durante a corrida,
+     * é chamado na classe Piloto no método corrida,
+     * @param valor que será adicionado ao desgaste atual
      */
     public void aumentarDesgaste(int valor) {
         this.desgaste += valor;
     }
 
-    // VALIDAR MÉTODO PARA AUMENTAR POTÊNCIA DO VEÍCULO
+    /**
+     * Método para aumentar a potencia do veiculo,
+     * @param valor
+     * é utilizaddo na classe Piloto método usarItem/aplicarEfeitos
+     */
     public void aumentarPotencia(int valor) {
         this.potenciaCV += valor;
     }
 
-    // VALIDAR MÉTODO PARA REDUZIR PESO DO VEÍCULO
+    /**
+     * Método para reduzir o peso do veiculo,
+     * @param valor
+     * é utilizaddo na classe Piloto método usarItem/aplicarEfeitos.
+     */
     public void reduzirPeso(double valor) {
         if (this.pesokg - valor >= 10) {
             this.pesokg -= valor;

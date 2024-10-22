@@ -82,9 +82,7 @@ public class Piloto {
             aplicarEfeitos(itemEscolhido);
             inventario.remove(escolha - 1);
             System.out.println("Item utilizado: " + itemEscolhido.getNome());
-
-
-            itemsUsados++;
+            itemsUsados++; // Incrementa após o uso do item
         }
 
         if (itemsUsados >= maxItemsPorCorrida) {
@@ -111,67 +109,80 @@ public class Piloto {
 
 
     /**
-     * Método para calcular o tempo total da corrida e validar se recorde da pista é batido,
+     * Método que simula  a corrida e valida se o recorde da pista é batido,
      * @param pista
-     * @return tempoTotal
+     * @return
      */
     public double corrida(Pista pista) {
         double tempoTotal = 0.0;
         int numeroVoltas = pista.getQuantidadeVoltas();
         double tempoRecorde = pista.getTempoRecordeSeg();
-
-        // Desgaste inicial do veículo
-        double desgaste = veiculoAtual.getDesgaste(); // CORREÇÃO
+        // Desgaste inicial do veículo pode ser 0.
+        double desgaste = veiculoAtual.getDesgaste();
 
         for (int i = 0; i < numeroVoltas; i++) {
-            double distanciaVolta = pista.getDistanciaVoltaM();
-            double potencia = veiculoAtual.getPotenciaCV();
-            double peso = veiculoAtual.getPesokg();
+            // Calcula o tempo da volta
+            double tempoVolta = calcularTempoVolta(pista, veiculoAtual, desgaste);
 
-            // Calcular o tempo da volta:
-            double tempoBase = distanciaVolta / (1.6 * potencia);
-            double ajustePeso = (0.2 * peso);
-            double ajusteDesgaste = (0.5 * desgaste);
-            double tempoVolta = tempoBase + ajustePeso + ajusteDesgaste;
-
-            // Calcular os atrasos nos momentos da pista:
+            // Calculo do atraso total dos momentos da pista
             double atrasoTotal = 0.0;
             for (Momento momento : pista.getMomentosPista()) {
-                double atraso = ((peso * momento.getAtrasoPeso()) + (potencia * momento.getAtrasoPotencia())) / 100;
-                atrasoTotal += atraso;
+                atrasoTotal += calcularAtraso(veiculoAtual, momento);
             }
 
             // Soma o tempo da volta mais o atraso total
             tempoTotal += tempoVolta + atrasoTotal;
 
-            // Incrementar o desgaste por volta
+            // Incrementa o desgaste por cada volta
             veiculoAtual.aumentarDesgaste(20);
             desgaste = veiculoAtual.getDesgaste();
 
-            // Se valor de desgaste ultrapassa o limite (1000)
+            // Se o desgaste ultrapassar o limite de 1000, o veículo avaria
             if (desgaste > 1000) {
                 System.out.println("O teu veículo avariou durante a corrida!");
-                break; // AVARIADO
+                break;
             }
-
         }
 
         System.out.println("O teu Tempo total: " + tempoTotal + " segundos");
+
         // Verificar se o piloto bateu o recorde da pista
         if (tempoTotal < tempoRecorde && desgaste < 1000) {
-            // Se tempo do piloto na pista for inferior ao tempo recorde da pista
-            System.out.println("\nParabéns! Bateu o recorde da pista! ");
             this.fichasCorrida += 1000; // Prémio total
             this.vitorias++;
-            System.out.println("Prémio: 1000/1000\n");
+            System.out.println("[Prémio: 1000/1000]\n");
         } else {
             this.fichasCorrida += 500; // Prémio parcial
-            System.out.println("Terminaste a corrida mas o recorde não é teu!");
-            System.out.println("Prémio: 500/1000");
+            System.out.println("[Prémio: 500/1000]\n");
         }
 
         return tempoTotal;
     }
+
+
+    /**
+     * Método auxiliar do método corrida para calcular atraso (momentos da pista)
+     * @param veiculo
+     * @param momento
+     * @return
+     */
+    private double calcularAtraso(Veiculo veiculo, Momento momento) {
+        return ((veiculo.getPesokg() * momento.getAtrasoPeso()) + (veiculo.getPotenciaCV() * momento.getAtrasoPotencia())) / 100;
+    }
+
+    /**
+     * Método auxiliar do método corrida para calcularTempo (peso e desgaste)
+     * @param pista
+     * @param veiculo
+     * @param desgaste
+     * @return
+     */
+    private double calcularTempoVolta(Pista pista, Veiculo veiculo, double desgaste) {
+        double tempoBase = pista.getDistanciaVoltaM() / (1.6 * veiculo.getPotenciaCV());
+        return tempoBase + (0.2 * veiculo.getPesokg()) + (0.5 * desgaste);
+    }
+
+
 
 
     /**

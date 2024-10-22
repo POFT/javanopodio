@@ -106,6 +106,7 @@ public class Oficina {
                 piloto.setFichasCorrida(piloto.getFichasCorrida() - itemEscolhido.getPrecoEmFichasCorrida());
                 piloto.getVeiculoAtual().adicionarItem(itemEscolhido);
                 System.out.println("Compra efetuada com sucesso: [" + itemEscolhido.getNome() + "]");
+                itensComprados++; // Aumenta o contador de itens comprados
             } else {
                 System.out.println("Não tens saldo suficiente!!!");
             }
@@ -187,6 +188,7 @@ public class Oficina {
 
             if (piloto.getFichasCorrida() + valorRetoma >= veiculoEscolhido.getPreco()) {
                 piloto.setFichasCorrida(piloto.getFichasCorrida() - veiculoEscolhido.getPreco());
+                veiculoEscolhido.setDesgaste(0);
                 piloto.setVeiculoAtual(veiculoEscolhido);
                 System.out.println("Compra efetuada com sucesso. [" + veiculoEscolhido.getMarca() + " " + veiculoEscolhido.getModelo()+"]");
                 garagem.remove(veiculoEscolhido);

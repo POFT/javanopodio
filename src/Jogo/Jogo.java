@@ -138,29 +138,35 @@ public class Jogo {
 
 
     // METODO PARA MENU COMPETIR/DECISÃO
-    public void decisaoMenuCompetir (Piloto piloto, Pista pista){
+    public double decisaoMenuCompetir(Piloto piloto, Pista pista) {
         Scanner input = new Scanner(System.in);
+        int opcao = 0;
+        double tempoTotal = 0.0;
 
-        int opcao= 0;
         do {
             System.out.println("\n[DECISÃO]");
             System.out.println("[1]. COMPETIR");
             System.out.println("[2]. PISTAS/VOLTAR");
             System.out.print("> ");
             opcao = input.nextInt();
-            switch (opcao){
+
+            switch (opcao) {
                 case 1:
-                    piloto.corrida(pista);
+                    // Inicia a corrida e captura o tempo total
+                    tempoTotal = piloto.corrida(pista);
                     pista.listarMomentos();
                     break;
-                case 2:// VOLTAR
+                case 2: // VOLTAR
                     System.out.println("___________________________");
                     break;
                 default:
                     System.out.println("Opção inválida! Tente novamente.");
                     break;
             }
-        }while(opcao != 2);
+        } while (opcao != 2);
+
+        // Retorna o tempo total da corrida
+        return tempoTotal;
     }
 
 
@@ -245,10 +251,10 @@ public class Jogo {
 
 
         // Instanciar pistas
-        Pista pista1 = new Pista("Autódromo do Estoril", 120.5, 118.3, 4000, 7);
-        Pista pista2 = new Pista("Circuit de Monaco", 95.2, 92.8, 3500, 9);
-        Pista pista3 = new Pista("Monza", 150.4, 133.0, 4500, 10);
-        Pista pista4 = new Pista("Silverstone", 150.7, 148.5, 4000,10);
+        Pista pista1 = new Pista("Autódromo do Estoril", 120.5, 3010.5, 4000, 7);
+        Pista pista2 = new Pista("Circuit de Monaco", 95.2, 3000.1, 3500, 9);
+        Pista pista3 = new Pista("Monza", 150.4, 4000.0, 4500, 10);
+        Pista pista4 = new Pista("Silverstone", 150.7, 4000.5, 4000,10);
         Pista pista5 = new Pista("Circuit Gilles Villeneuve", 105.9, 104.3, 5800, 5);
 
         // Instanciar momentos para as pistas
@@ -329,27 +335,54 @@ public class Jogo {
                 case 1:
                     System.out.println("\n[DETALHE PISTA 1]\n");
                     pista1.imprimirDetalhes();
-                    decisaoMenuCompetir(piloto,pista1);
+                    double tempoTotal1 = decisaoMenuCompetir(piloto, pista1);
+                    if (tempoTotal1 < pista1.getTempoRecordeSeg()) {
+                        System.out.println("\nParabéns!!! o novo recorde é teu!!!");
+                    } else {
+                        System.out.println("Não foi desta vez, continua a tentar bater o recorde!");
+                    }
                     break;
                 case 2:
                     System.out.println("\n[DETALHE PISTA 2]\n");
                     pista2.imprimirDetalhes();
-                    decisaoMenuCompetir(piloto,pista2);
+                    double tempoTotal2 = decisaoMenuCompetir(piloto, pista2);
+                    if (tempoTotal2 < pista2.getTempoRecordeSeg()) {
+                        System.out.println("\nParabéns!!! o novo recorde é teu!!!");
+                    } else {
+                        System.out.println("Não foi desta vez, continua a tentar bater o recorde!");
+                    }
                     break;
                 case 3:
                     System.out.println("\n[DETALHE PISTA 3]\n");
                     pista3.imprimirDetalhes();
-                    decisaoMenuCompetir(piloto,pista3);
+                    double tempoTotal3 = decisaoMenuCompetir(piloto, pista3);
+                    if (tempoTotal3 < pista3.getTempoRecordeSeg()) {
+                        System.out.println("\nParabéns!!! o novo recorde é teu!!!");
+                    } else {
+                        System.out.println("Não foi desta vez, continua a tentar bater o recorde!");
+                    }
                     break;
                 case 4:
                     System.out.println("\n[DETALHE PISTA 4]\n");
                     pista4.imprimirDetalhes();
-                    decisaoMenuCompetir(piloto,pista4);
+                    double tempoTotal4 = decisaoMenuCompetir(piloto, pista4);
+                    if (tempoTotal4 < pista4.getTempoRecordeSeg()) {
+                        System.out.println("\nParabéns!!! o novo recorde é teu!!!");
+                    } else {
+                        System.out.println("Não foi desta vez, continua a tentar bater o recorde!");
+                    }
                     break;
                 case 5:
+                    // Esta seria a pista mais difícil: Circuit Gilles Villeneuve
                     System.out.println("\n[DETALHE PISTA 5]\n");
                     pista5.imprimirDetalhes();
-                    decisaoMenuCompetir(piloto,pista5);
+                    double tempoTotal5 = decisaoMenuCompetir(piloto, pista5);
+                    // Valida se bateu o recorde da pista 5
+                    if (tempoTotal5 < pista5.getTempoRecordeSeg()) {
+                        System.out.println("\nParabéns!!! o novo recorde é teu!!!");
+                    } else {
+                        System.out.println("Não foi desta vez, continua a tentar bater o recorde!");
+                    }
                     break;
                 case  6:
                     decisaoMenuOficina(piloto,oficina);

@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6a81b900-4609-4d0e-8f61-b52195f6ee03" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entidades/Momento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Momento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entidades/Oficina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Oficina.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entidades/Piloto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Piloto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entidades/Pista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Pista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Itens/Habilidade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Itens/Habilidade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Itens/Modificacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Itens/Modificacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entidades/Veiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entidades/Veiculo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Jogo/Jogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jogo/Jogo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,24 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/POO/javanopodio",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/POO/javanopodio&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -89,6 +87,7 @@
       <workItem from="1729422261514" duration="28000" />
       <workItem from="1729434973461" duration="8153000" />
       <workItem from="1729453303917" duration="2396000" />
+      <workItem from="1729627370418" duration="4083000" />
     </task>
     <servers />
   </component>

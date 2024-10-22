@@ -15,8 +15,10 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
 
-        System.out.println("Bem-vindo ao Simulador de Corridas!");
 
+        System.out.println("\nTrabalho Prático - Desenvolvido por Pedro Oliveira");
+        System.out.println("Programação Orientada a Objetos");
+        System.out.println("\nBem-vindo ao Simulador de Corridas!");
         Jogo jogo = new Jogo();
         Piloto piloto = jogo.criarPiloto();
         jogo.simuladorCorridas(piloto);
